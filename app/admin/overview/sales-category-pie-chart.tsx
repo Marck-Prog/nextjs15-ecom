@@ -3,8 +3,29 @@
 import React from 'react'
 import { PieChart, Pie, ResponsiveContainer, Cell } from 'recharts'
 
-export default function SalesCategoryPieChart({ data }: { data: any[] }) {
+// Define interface for category data matching server-side TopSalesCategory
+interface CategoryData {
+  _id: string
+  totalSales: number
+}
+
+// Define interface for label props
+interface LabelProps {
+  cx: number
+  cy: number
+  midAngle: number
+  innerRadius: number
+  outerRadius: number
+  index: number
+}
+
+export default function SalesCategoryPieChart({
+  data,
+}: {
+  data: CategoryData[]
+}) {
   const RADIAN = Math.PI / 180
+
   const renderCustomizedLabel = ({
     cx,
     cy,
@@ -12,23 +33,21 @@ export default function SalesCategoryPieChart({ data }: { data: any[] }) {
     innerRadius,
     outerRadius,
     index,
-  }: any) => {
+  }: LabelProps) => {
     const radius = innerRadius + (outerRadius - innerRadius) * 0.5
     const x = cx + radius * Math.cos(-midAngle * RADIAN)
     const y = cy + radius * Math.sin(-midAngle * RADIAN)
 
     return (
-      <>
-        <text
-          x={x}
-          y={y}
-          textAnchor={x > cx ? 'start' : 'end'}
-          dominantBaseline='central'
-          className='text-xs'
-        >
-          {`${data[index]._id} ${data[index].totalSales} sales`}
-        </text>
-      </>
+      <text
+        x={x}
+        y={y}
+        textAnchor={x > cx ? 'start' : 'end'}
+        dominantBaseline='central'
+        className='text-xs'
+      >
+        {`${data[index]._id} ${data[index].totalSales} sales`}
+      </text>
     )
   }
 
@@ -44,7 +63,7 @@ export default function SalesCategoryPieChart({ data }: { data: any[] }) {
           label={renderCustomizedLabel}
         >
           {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill='--primary' />
+            <Cell key={`cell-${index}`} fill='var(--primary)' /> // Changed to CSS variable syntax
           ))}
         </Pie>
       </PieChart>

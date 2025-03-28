@@ -13,11 +13,46 @@ import { Cart, IOrderList, OrderItem, ShippingAddress } from '@/types'
 import Product from '../db/models/product.model'
 import User from '../db/models/user.model'
 
-// Define a custom DateRange type since we're no longer using react-day-picker
+// Define specific interfaces for aggregation results
+interface SalesChartData {
+  date: string
+  totalSales: number
+}
+
+interface TopSalesProduct {
+  id: string
+  label: string
+  image: string
+  value: number
+}
+
+interface TopSalesCategory {
+  _id: string
+  totalSales: number
+}
+
+interface MonthlySales {
+  label: string
+  value: number
+}
+
 type DateRange = { from: Date; to: Date }
 
+// Interface for the complete order summary response
+interface OrderSummary {
+  ordersCount: number
+  productsCount: number
+  usersCount: number
+  totalSales: number
+  monthlySales: MonthlySales[]
+  salesChartData: SalesChartData[]
+  topSalesCategories: TopSalesCategory[]
+  topSalesProducts: TopSalesProduct[]
+  latestOrders: IOrderList[]
+}
+
 // GET ORDERS
-export async function getOrderSummary(date: DateRange) {
+export async function getOrderSummary(date: DateRange): Promise<OrderSummary> {
   await connectToDatabase()
 
   const ordersCount = await Order.countDocuments({
@@ -39,7 +74,9 @@ export async function getOrderSummary(date: DateRange) {
     },
   })
 
-  const totalSalesResult = await Order.aggregate([
+  const totalSalesResult = await Order.aggregate<{
+    totalSales: number
+  }>([
     {
       $match: {
         createdAt: {
@@ -64,7 +101,7 @@ export async function getOrderSummary(date: DateRange) {
     today.getMonth() - 5,
     1
   )
-  const monthlySales = await Order.aggregate([
+  const monthlySales = await Order.aggregate<MonthlySales>([
     {
       $match: {
         createdAt: {
@@ -87,13 +124,15 @@ export async function getOrderSummary(date: DateRange) {
     },
     { $sort: { label: -1 } },
   ])
+
   const topSalesCategories = await getTopSalesCategories(date)
   const topSalesProducts = await getTopSalesProducts(date)
 
   const latestOrders = await Order.find()
-    .populate('user', 'name')
+    .populate<{ user: { name: string } }>('user', 'name')
     .sort({ createdAt: 'desc' })
     .limit(PAGE_SIZE)
+
   return {
     ordersCount,
     productsCount,
@@ -107,8 +146,8 @@ export async function getOrderSummary(date: DateRange) {
   }
 }
 
-async function getSalesChartData(date: DateRange) {
-  const result = await Order.aggregate([
+async function getSalesChartData(date: DateRange): Promise<SalesChartData[]> {
+  const result = await Order.aggregate<SalesChartData>([
     {
       $match: {
         createdAt: {
@@ -148,8 +187,10 @@ async function getSalesChartData(date: DateRange) {
   return result
 }
 
-async function getTopSalesProducts(date: DateRange) {
-  const result = await Order.aggregate([
+async function getTopSalesProducts(
+  date: DateRange
+): Promise<TopSalesProduct[]> {
+  const result = await Order.aggregate<TopSalesProduct>([
     {
       $match: {
         createdAt: {
@@ -192,8 +233,11 @@ async function getTopSalesProducts(date: DateRange) {
   return result
 }
 
-async function getTopSalesCategories(date: DateRange, limit = 5) {
-  const result = await Order.aggregate([
+async function getTopSalesCategories(
+  date: DateRange,
+  limit = 5
+): Promise<TopSalesCategory[]> {
+  const result = await Order.aggregate<TopSalesCategory>([
     {
       $match: {
         createdAt: {
@@ -216,6 +260,7 @@ async function getTopSalesCategories(date: DateRange, limit = 5) {
   return result
 }
 
+// Rest of the code remains unchanged as it didn't contain 'any' types
 export async function getOrderById(orderId: string): Promise<IOrder> {
   await connectToDatabase()
   const order = await Order.findById(orderId)
@@ -332,7 +377,6 @@ export const calcDeliveryDateAndPrice = async ({
   }
 }
 
-// GET
 export async function getMyOrders({
   limit,
   page,
@@ -361,7 +405,6 @@ export async function getMyOrders({
   }
 }
 
-// CREATE
 export const createOrder = async (clientSideCart: Cart) => {
   try {
     await connectToDatabase()

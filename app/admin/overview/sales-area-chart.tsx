@@ -13,8 +13,16 @@ import {
   TooltipProps,
   XAxis,
   YAxis,
+  XAxisProps,
 } from 'recharts'
 
+// Define interface for chart data matching server-side SalesChartData
+interface ChartData {
+  date: string
+  totalSales: number
+}
+
+// Define interface for custom tooltip props
 interface CustomTooltipProps extends TooltipProps<number, string> {
   active?: boolean
   payload?: { value: number }[]
@@ -41,18 +49,28 @@ const CustomTooltip: React.FC<CustomTooltipProps> = ({
   return null
 }
 
-const CustomXAxisTick: React.FC<any> = ({ x, y, payload }) => {
+// Define interface for XAxis tick props
+interface CustomXAxisTickProps extends XAxisProps {
+  x?: number
+  y?: number
+  payload?: { value: string }
+}
+
+const CustomXAxisTick: React.FC<CustomXAxisTickProps> = ({ x, y, payload }) => {
   return (
-    <text x={x} y={y + 10} textAnchor='left' fill='#666' className='text-xs'>
-      {formatDateTime(new Date(payload.value)).dateOnly}
-      {/* {`${payload.value.split('/')[1]}/${payload.value.split('/')[2]}`} */}
+    <text
+      x={x}
+      y={y ? y + 10 : 10}
+      textAnchor='left'
+      fill='#666'
+      className='text-xs'
+    >
+      {payload && formatDateTime(new Date(payload.value)).dateOnly}
     </text>
   )
 }
 
-export default function SalesAreaChart({ data }: { data: any[] }) {
-  //   const { cssColors, color } = useColorStore(theme)
-
+export default function SalesAreaChart({ data }: { data: ChartData[] }) {
   return (
     <ResponsiveContainer width='100%' height={400}>
       <AreaChart data={data}>
@@ -65,7 +83,7 @@ export default function SalesAreaChart({ data }: { data: any[] }) {
           dataKey='totalSales'
           stroke='light'
           strokeWidth={2}
-          fill='--primary'
+          fill='var(--primary)' // Changed to CSS variable syntax
           fillOpacity={0.8}
         />
       </AreaChart>

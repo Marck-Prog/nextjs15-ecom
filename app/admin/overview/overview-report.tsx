@@ -1,4 +1,5 @@
 'use client'
+
 import { BadgeDollarSign, Barcode, CreditCard, Users } from 'lucide-react'
 import Link from 'next/link'
 import {
@@ -24,11 +25,45 @@ import SalesAreaChart from './sales-area-chart'
 import ProductPrice from '@/components/shared/product/product-price'
 import TableChart from './table-chart'
 import { Skeleton } from '@/components/ui/skeleton'
-
-// New imports for react-datepicker
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { IOrderList } from '@/types'
+
+// Define specific interfaces matching the server-side types
+interface SalesChartData {
+  date: string
+  totalSales: number
+}
+
+interface MonthlySales {
+  label: string
+  value: number
+}
+
+interface TopSalesProduct {
+  id: string
+  label: string
+  image: string
+  value: number
+}
+
+interface TopSalesCategory {
+  _id: string
+  totalSales: number
+}
+
+// Define interface for dashboard data
+interface DashboardData {
+  totalSales: number
+  ordersCount: number
+  usersCount: number
+  productsCount: number
+  salesChartData: SalesChartData[]
+  monthlySales: MonthlySales[]
+  topSalesProducts: TopSalesProduct[]
+  topSalesCategories: TopSalesCategory[]
+  latestOrders: IOrderList[]
+}
 
 export default function OverviewReport() {
   const [date, setDate] = useState<{ from: Date; to: Date } | undefined>({
@@ -36,7 +71,7 @@ export default function OverviewReport() {
     to: new Date(),
   })
 
-  const [data, setData] = useState<{ [key: string]: any }>()
+  const [data, setData] = useState<DashboardData | undefined>(undefined)
   const [isPending, startTransition] = useTransition()
 
   useEffect(() => {
@@ -47,7 +82,7 @@ export default function OverviewReport() {
     }
   }, [date])
 
-  if (!data) {
+  if (!data || isPending) {
     return (
       <div className='space-y-4'>
         <div>
@@ -101,7 +136,6 @@ export default function OverviewReport() {
               </div>
             </CardContent>
           </Card>
-          {/* Other cards remain unchanged */}
           <Card>
             <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
               <CardTitle className='text-sm font-medium'>Sales</CardTitle>
@@ -232,7 +266,6 @@ export default function OverviewReport() {
   )
 }
 
-// New CalendarDateRangePicker component using react-datepicker
 function CalendarDateRangePicker({
   defaultDate,
   setDate,
@@ -260,7 +293,7 @@ function CalendarDateRangePicker({
       startDate={startDate}
       endDate={endDate}
       onChange={handleDateChange}
-      inline // Optional: shows calendar always open like react-day-picker
+      inline
       className='rounded-md border p-2'
     />
   )
