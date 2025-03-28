@@ -3,7 +3,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import { useForm } from 'react-hook-form'
+import { useForm, Resolver } from 'react-hook-form'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import {
@@ -24,9 +24,16 @@ import { UploadButton } from '@/lib/uploadthing'
 import { ProductInputSchema, ProductUpdateSchema } from '@/lib/validator'
 import { Checkbox } from '@/components/ui/checkbox'
 import { toSlug } from '@/lib/utils'
-import { IProductInput } from '@/types'
+import { z } from 'zod'
 
-const productDefaultValues: IProductInput =
+// Define the types explicitly from the schemas
+type ProductInputValues = z.infer<typeof ProductInputSchema>
+type ProductUpdateValues = z.infer<typeof ProductUpdateSchema>
+type ProductFormValues<T extends 'Create' | 'Update'> = T extends 'Create'
+  ? ProductInputValues
+  : ProductUpdateValues
+
+const productDefaultValues: ProductInputValues =
   process.env.NODE_ENV === 'development'
     ? {
         name: 'Sample Product',
@@ -80,19 +87,22 @@ const ProductForm = ({
 }) => {
   const router = useRouter()
 
-  const form = useForm<IProductInput>({
-    resolver:
-      type === 'Update'
-        ? zodResolver(ProductUpdateSchema)
-        : zodResolver(ProductInputSchema),
+  const form = useForm<ProductFormValues<typeof type>>({
+    resolver: (type === 'Update'
+      ? zodResolver(ProductUpdateSchema)
+      : zodResolver(ProductInputSchema)) as Resolver<
+      ProductFormValues<typeof type>
+    >,
     defaultValues:
-      product && type === 'Update' ? product : productDefaultValues,
+      product && type === 'Update'
+        ? ({ ...product, _id: productId } as ProductUpdateValues)
+        : productDefaultValues,
   })
 
   const { toast } = useToast()
-  async function onSubmit(values: IProductInput) {
+  async function onSubmit(values: ProductFormValues<typeof type>) {
     if (type === 'Create') {
-      const res = await createProduct(values)
+      const res = await createProduct(values as ProductInputValues)
       if (!res.success) {
         toast({
           variant: 'destructive',
@@ -110,7 +120,10 @@ const ProductForm = ({
         router.push(`/admin/products`)
         return
       }
-      const res = await updateProduct({ ...values, _id: productId })
+      const res = await updateProduct({
+        ...values,
+        _id: productId,
+      } as ProductUpdateValues)
       if (!res.success) {
         toast({
           variant: 'destructive',
@@ -140,7 +153,6 @@ const ProductForm = ({
                 <FormControl>
                   <Input placeholder='Enter product name' {...field} />
                 </FormControl>
-
                 <FormMessage />
               </FormItem>
             )}
@@ -152,7 +164,6 @@ const ProductForm = ({
             render={({ field }) => (
               <FormItem className='w-full'>
                 <FormLabel>Slug</FormLabel>
-
                 <FormControl>
                   <div className='relative'>
                     <Input
@@ -171,7 +182,6 @@ const ProductForm = ({
                     </button>
                   </div>
                 </FormControl>
-
                 <FormMessage />
               </FormItem>
             )}
@@ -201,7 +211,6 @@ const ProductForm = ({
                 <FormControl>
                   <Input placeholder='Enter product brand' {...field} />
                 </FormControl>
-
                 <FormMessage />
               </FormItem>
             )}
@@ -290,7 +299,6 @@ const ProductForm = ({
                     </div>
                   </CardContent>
                 </Card>
-
                 <FormMessage />
               </FormItem>
             )}
