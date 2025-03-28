@@ -1,6 +1,7 @@
 import { UserIcon } from 'lucide-react'
 import Link from 'next/link'
 import CartButton from './cart-button'
+import UserButton from './user-button'
 
 export default function Menu() {
   return (
@@ -10,6 +11,7 @@ export default function Menu() {
           <UserIcon className='h-8 w-8' />
           <span className='font-bold'>Sign in</span>
         </Link>
+        <UserButton />
       </nav>
       <nav className='flex gap-3 w-full'>
         <CartButton />
