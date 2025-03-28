@@ -7,3 +7,7 @@ export const APP_DESCRIPTION =
   'Transform your ideas into bold, wearable art with custom graphic t-shirts that speak louder than words.'
 
 export const PAGE_SIZE = Number(process.env.PAGE_SIZE || 9)
+
+export const FREE_SHIPPING_MIN_PRICE = Number(
+  process.env.FREE_SHIPPING_MIN_PRICE || 35
+)
