@@ -120,6 +120,10 @@
   }
 }
 
+.h2-bold {
+  @apply font-bold text-lg lg:text-xl;
+}
+
 /* @layer utilities {
   .header-button {
     @apply cursor-pointer p-1 border border-transparent hover:border-white rounded-[2px];
