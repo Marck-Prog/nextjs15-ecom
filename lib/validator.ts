@@ -130,6 +130,10 @@ export const UserSignUpSchema = UserSignInSchema.extend({
   path: ['confirmPassword'],
 })
 
+export const UserNameSchema = z.object({
+  name: UserName,
+})
+
 const MongoId = z
   .string()
   .regex(/^[0-9a-fA-F]{24}$/, { message: 'Invalid MongoDB ID' })
