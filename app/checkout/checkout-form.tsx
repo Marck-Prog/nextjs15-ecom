@@ -27,6 +27,8 @@ import {
 } from '@/lib/utils'
 import { ShippingAddressSchema } from '@/lib/validator'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { createOrder } from '@/lib/actions/order.actions'
+import { toast } from '@/hooks/use-toast'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
@@ -83,6 +85,7 @@ const CheckoutForm = () => {
     setPaymentMethod,
     updateItem,
     removeItem,
+    clearCart,
     setDeliveryDateIndex,
   } = useCartStore()
   const isMounted = useIsMounted()
@@ -114,7 +117,32 @@ const CheckoutForm = () => {
     useState<boolean>(false)
 
   const handlePlaceOrder = async () => {
-    // TODO: place order
+    const res = await createOrder({
+      items,
+      shippingAddress,
+      expectedDeliveryDate: calculateFutureDate(
+        AVAILABLE_DELIVERY_DATES[deliveryDateIndex!].daysToDeliver
+      ),
+      deliveryDateIndex,
+      paymentMethod,
+      itemsPrice,
+      shippingPrice,
+      taxPrice,
+      totalPrice,
+    })
+    if (!res.success) {
+      toast({
+        description: res.message,
+        variant: 'destructive',
+      })
+    } else {
+      toast({
+        description: res.message,
+        variant: 'default',
+      })
+      clearCart()
+      router.push(`/checkout/${res.data?.orderId}`)
+    }
   }
   const handleSelectPaymentMethod = () => {
     setIsAddressSelected(true)
