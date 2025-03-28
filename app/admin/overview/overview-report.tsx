@@ -1,6 +1,5 @@
 'use client'
 import { BadgeDollarSign, Barcode, CreditCard, Users } from 'lucide-react'
-
 import Link from 'next/link'
 import {
   Card,
@@ -18,29 +17,28 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import { calculatePastDate, formatDateTime, formatNumber } from '@/lib/utils'
-
 import SalesCategoryPieChart from './sales-category-pie-chart'
-
 import React, { useEffect, useState, useTransition } from 'react'
-import { DateRange } from 'react-day-picker'
 import { getOrderSummary } from '@/lib/actions/order.actions'
 import SalesAreaChart from './sales-area-chart'
-import { CalendarDateRangePicker } from './date-range-picker'
-import { IOrderList } from '@/types'
 import ProductPrice from '@/components/shared/product/product-price'
 import TableChart from './table-chart'
 import { Skeleton } from '@/components/ui/skeleton'
 
+// New imports for react-datepicker
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
+import { IOrderList } from '@/types'
+
 export default function OverviewReport() {
-  const [date, setDate] = useState<DateRange | undefined>({
+  const [date, setDate] = useState<{ from: Date; to: Date } | undefined>({
     from: calculatePastDate(30),
     to: new Date(),
   })
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [data, setData] = useState<{ [key: string]: any }>()
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isPending, startTransition] = useTransition()
+
   useEffect(() => {
     if (date) {
       startTransition(async () => {
@@ -49,32 +47,25 @@ export default function OverviewReport() {
     }
   }, [date])
 
-  if (!data)
+  if (!data) {
     return (
       <div className='space-y-4'>
         <div>
           <h1 className='h1-bold'>Dashboard</h1>
         </div>
-        {/* First Row */}
         <div className='flex gap-4'>
           {[...Array(4)].map((_, index) => (
             <Skeleton key={index} className='h-36 w-full' />
           ))}
         </div>
-
-        {/* Second Row */}
         <div>
           <Skeleton className='h-[30rem] w-full' />
         </div>
-
-        {/* Third Row */}
         <div className='flex gap-4'>
           {[...Array(2)].map((_, index) => (
             <Skeleton key={index} className='h-60 w-full' />
           ))}
         </div>
-
-        {/* Fourth Row */}
         <div className='flex gap-4'>
           {[...Array(2)].map((_, index) => (
             <Skeleton key={index} className='h-60 w-full' />
@@ -82,6 +73,7 @@ export default function OverviewReport() {
         </div>
       </div>
     )
+  }
 
   return (
     <div>
@@ -90,7 +82,7 @@ export default function OverviewReport() {
         <CalendarDateRangePicker defaultDate={date} setDate={setDate} />
       </div>
       <div className='space-y-4'>
-        <div className='grid gap-4  grid-cols-2 lg:grid-cols-4'>
+        <div className='grid gap-4 grid-cols-2 lg:grid-cols-4'>
           <Card>
             <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
               <CardTitle className='text-sm font-medium'>
@@ -109,6 +101,7 @@ export default function OverviewReport() {
               </div>
             </CardContent>
           </Card>
+          {/* Other cards remain unchanged */}
           <Card>
             <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
               <CardTitle className='text-sm font-medium'>Sales</CardTitle>
@@ -164,7 +157,6 @@ export default function OverviewReport() {
             </CardContent>
           </Card>
         </div>
-
         <div className='grid gap-4 md:grid-cols-2'>
           <Card>
             <CardHeader>
@@ -188,7 +180,6 @@ export default function OverviewReport() {
             </CardContent>
           </Card>
         </div>
-
         <div className='grid gap-4 md:grid-cols-2'>
           <Card>
             <CardHeader>
@@ -218,14 +209,12 @@ export default function OverviewReport() {
                       <TableCell>
                         {order.user ? order.user.name : 'Deleted User'}
                       </TableCell>
-
                       <TableCell>
                         {formatDateTime(order.createdAt).dateOnly}
                       </TableCell>
                       <TableCell>
                         <ProductPrice price={order.totalPrice} plain />
                       </TableCell>
-
                       <TableCell>
                         <Link href={`/admin/orders/${order._id}`}>
                           <span className='px-2'>Details</span>
@@ -240,5 +229,39 @@ export default function OverviewReport() {
         </div>
       </div>
     </div>
+  )
+}
+
+// New CalendarDateRangePicker component using react-datepicker
+function CalendarDateRangePicker({
+  defaultDate,
+  setDate,
+}: {
+  defaultDate: { from: Date; to: Date } | undefined
+  setDate: (date: { from: Date; to: Date } | undefined) => void
+}) {
+  const [startDate, setStartDate] = useState<Date | null>(
+    defaultDate?.from || null
+  )
+  const [endDate, setEndDate] = useState<Date | null>(defaultDate?.to || null)
+
+  const handleDateChange = (dates: [Date | null, Date | null]) => {
+    const [start, end] = dates
+    setStartDate(start)
+    setEndDate(end)
+    if (start && end) {
+      setDate({ from: start, to: end })
+    }
+  }
+
+  return (
+    <DatePicker
+      selectsRange
+      startDate={startDate}
+      endDate={endDate}
+      onChange={handleDateChange}
+      inline // Optional: shows calendar always open like react-day-picker
+      className='rounded-md border p-2'
+    />
   )
 }

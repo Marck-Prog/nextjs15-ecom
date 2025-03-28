@@ -10,9 +10,11 @@ import { AVAILABLE_DELIVERY_DATES, PAGE_SIZE } from '../constants'
 import { sendPurchaseReceipt } from '@/emails'
 import { paypal } from '../paypal'
 import { Cart, IOrderList, OrderItem, ShippingAddress } from '@/types'
-import { DateRange } from 'react-day-picker'
 import Product from '../db/models/product.model'
 import User from '../db/models/user.model'
+
+// Define a custom DateRange type since we're no longer using react-day-picker
+type DateRange = { from: Date; to: Date }
 
 // GET ORDERS
 export async function getOrderSummary(date: DateRange) {
@@ -83,7 +85,6 @@ export async function getOrderSummary(date: DateRange) {
         value: '$totalSales',
       },
     },
-
     { $sort: { label: -1 } },
   ])
   const topSalesCategories = await getTopSalesCategories(date)
@@ -157,10 +158,7 @@ async function getTopSalesProducts(date: DateRange) {
         },
       },
     },
-    // Step 1: Unwind orderItems array
     { $unwind: '$items' },
-
-    // Step 2: Group by productId to calculate total sales per product
     {
       $group: {
         _id: {
@@ -170,7 +168,7 @@ async function getTopSalesProducts(date: DateRange) {
         },
         totalSales: {
           $sum: { $multiply: ['$items.quantity', '$items.price'] },
-        }, // Assume quantity field in orderItems represents units sold
+        },
       },
     },
     {
@@ -179,8 +177,6 @@ async function getTopSalesProducts(date: DateRange) {
       },
     },
     { $limit: 6 },
-
-    // Step 3: Replace productInfo array with product name and format the output
     {
       $project: {
         _id: 0,
@@ -190,8 +186,6 @@ async function getTopSalesProducts(date: DateRange) {
         value: '$totalSales',
       },
     },
-
-    // Step 4: Sort by totalSales in descending order
     { $sort: { _id: 1 } },
   ])
 
@@ -208,18 +202,14 @@ async function getTopSalesCategories(date: DateRange, limit = 5) {
         },
       },
     },
-    // Step 1: Unwind orderItems array
     { $unwind: '$items' },
-    // Step 2: Group by productId to calculate total sales per product
     {
       $group: {
         _id: '$items.category',
-        totalSales: { $sum: '$items.quantity' }, // Assume quantity field in orderItems represents units sold
+        totalSales: { $sum: '$items.quantity' },
       },
     },
-    // Step 3: Sort by totalSales in descending order
     { $sort: { totalSales: -1 } },
-    // Step 4: Limit to top N products
     { $limit: limit },
   ])
 
@@ -377,7 +367,6 @@ export const createOrder = async (clientSideCart: Cart) => {
     await connectToDatabase()
     const session = await auth()
     if (!session) throw new Error('User not authenticated')
-    // recalculate price and delivery date on the server
     const createdOrder = await createOrderFromCart(
       clientSideCart,
       session.user.id!
@@ -391,6 +380,7 @@ export const createOrder = async (clientSideCart: Cart) => {
     return { success: false, message: formatError(error) }
   }
 }
+
 export const createOrderFromCart = async (
   clientSideCart: Cart,
   userId: string
