@@ -5,3 +5,5 @@ export const APP_SLOGAN =
 export const APP_DESCRIPTION =
   process.env.NEXT_PUBLIC_APP_DESCRIPTION ||
   'Transform your ideas into bold, wearable art with custom graphic t-shirts that speak louder than words.'
+
+export const PAGE_SIZE = Number(process.env.PAGE_SIZE || 9)
