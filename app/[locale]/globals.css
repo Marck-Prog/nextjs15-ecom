@@ -44,7 +44,7 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
+  --background: oklch(1 0 0); /* White */
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
@@ -79,7 +79,7 @@
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
+  /* Removed --background override to keep it white */
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
@@ -119,6 +119,7 @@
   }
   body {
     @apply bg-background text-foreground;
+    background-color: oklch(1 0 0) !important; /* Force white background */
   }
   /* Target all ShadCN buttons */
   button,
@@ -156,7 +157,7 @@
 
 .highlight-link a,
 a.highlight-link {
-  @apply text-sky-700  hover:text-orange-700 hover:underline;
+  @apply text-sky-700 hover:text-orange-700 hover:underline;
 }
 
 .flex-between {
