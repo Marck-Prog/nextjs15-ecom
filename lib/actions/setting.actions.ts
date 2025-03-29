@@ -1,10 +1,10 @@
 'use server'
 import { ISettingInput } from '@/types'
 import data from '../data'
+import Setting from '../db/models/setting.model'
 import { connectToDatabase } from '../db'
 import { formatError } from '../utils'
 import { cookies } from 'next/headers'
-import Setting from '../db/models/setting.model'
 
 const globalForSettings = global as unknown as {
   cachedSettings: ISettingInput | null
