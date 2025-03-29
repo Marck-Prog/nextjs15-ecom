@@ -1,6 +1,5 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
-
 import { Cart, OrderItem, ShippingAddress } from '@/types'
 import { calcDeliveryDateAndPrice } from '@/lib/actions/order.actions'
 
@@ -17,6 +16,7 @@ const initialState: Cart = {
 
 interface CartState {
   cart: Cart
+  showSidebar: boolean
   addItem: (item: OrderItem, quantity: number) => Promise<string>
   updateItem: (item: OrderItem, quantity: number) => Promise<void>
   removeItem: (item: OrderItem) => void
@@ -24,12 +24,14 @@ interface CartState {
   setShippingAddress: (shippingAddress: ShippingAddress) => Promise<void>
   setPaymentMethod: (paymentMethod: string) => void
   setDeliveryDateIndex: (index: number) => Promise<void>
+  toggleSidebar: (value?: boolean) => void
 }
 
 const useCartStore = create(
   persist<CartState>(
     (set, get) => ({
       cart: initialState,
+      showSidebar: false,
 
       addItem: async (item: OrderItem, quantity: number) => {
         const { items, shippingAddress } = get().cart
@@ -69,6 +71,7 @@ const useCartStore = create(
               shippingAddress,
             })),
           },
+          showSidebar: true,
         })
         const foundItem = updatedCartItems.find(
           (x) =>
@@ -170,6 +173,11 @@ const useCartStore = create(
           },
         })
       },
+      toggleSidebar: (value?: boolean) =>
+        set((state) => ({
+          ...state,
+          showSidebar: value ?? !state.showSidebar,
+        })),
       init: () => set({ cart: initialState }),
     }),
 

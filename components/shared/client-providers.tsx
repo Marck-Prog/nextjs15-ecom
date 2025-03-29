@@ -6,6 +6,7 @@ import AppInitializer from './app-initializer'
 import { ClientSetting } from '@/types'
 import { Toaster } from '../ui/sonner'
 import { ThemeProvider } from 'next-themes'
+import { SessionProvider } from 'next-auth/react'
 
 export default function ClientProviders({
   setting,
@@ -18,20 +19,22 @@ export default function ClientProviders({
 
   return (
     <AppInitializer setting={setting}>
-      <ThemeProvider
-        attribute='class'
-        defaultTheme={setting.common.defaultTheme.toLocaleLowerCase()}
-      >
-        {visible ? (
-          <div className='flex min-h-screen'>
-            <div className='flex-1 overflow-hidden'>{children}</div>
-            <CartSidebar />
-          </div>
-        ) : (
-          <div>{children}</div>
-        )}
-        <Toaster />
-      </ThemeProvider>
+      <SessionProvider>
+        <ThemeProvider
+          attribute='class'
+          defaultTheme={setting.common.defaultTheme.toLocaleLowerCase()}
+        >
+          {visible ? (
+            <div className='flex min-h-screen'>
+              <div className='flex-1 overflow-hidden'>{children}</div>
+              <CartSidebar />
+            </div>
+          ) : (
+            <div>{children}</div>
+          )}
+          <Toaster />
+        </ThemeProvider>
+      </SessionProvider>
     </AppInitializer>
   )
 }

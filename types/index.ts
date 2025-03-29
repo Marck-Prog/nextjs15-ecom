@@ -29,6 +29,21 @@ export type IReviewDetails = IReviewInput & {
 }
 export type IProductInput = z.infer<typeof ProductInputSchema>
 
+export interface SubItem {
+  name: string
+  href: string
+}
+
+export interface SubCategory {
+  category: string
+  items: SubItem[]
+}
+
+export interface MenuItem {
+  name: string
+  subItems: SubCategory[]
+}
+
 export type Data = {
   settings: ISettingInput[]
   webPages: IWebPageInput[]
@@ -39,10 +54,10 @@ export type Data = {
     rating: number
     comment: string
   }[]
-  headerMenus: {
-    name: string
-    href: string
-  }[]
+  headerMenus: MenuItem[]
+  //   name: string
+  //   href: string
+  // }[]
   carousels: {
     image: string
     url: string

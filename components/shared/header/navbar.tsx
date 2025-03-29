@@ -3,11 +3,12 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-// import NavIcons from './nav-icons'
 // import MobileMenu from './mobile-menu'
-// import DropdownMenu from './dropdown'
 import TopBar from './topbar'
-// import { MenuItem } from '@/types'
+import { MenuItem } from '@/types'
+import DropdownMenu from './dropdown'
+// import Sidebar from './sidebar'
+import NavIcons from './nav-icons'
 
 interface Site {
   logo: string
@@ -16,7 +17,7 @@ interface Site {
 
 interface NavbarProps {
   site: Site
-  // headerMenus: MenuItem[]
+  headerMenus: MenuItem[]
   categories: string[]
   translations: {
     all: string
@@ -26,9 +27,9 @@ interface NavbarProps {
 
 export default function Navbar({
   site,
-  // headerMenus,
-  // categories,
-  // translations,
+  headerMenus,
+  categories,
+  translations,
 }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false)
 
@@ -57,7 +58,7 @@ export default function Navbar({
             : 'relative bg-white duration-100 mt-10'
         }`}
       >
-        {/* <MobileMenu /> */}
+        {/* <Sidebar categories={categories} /> */}
 
         <div className='relative flex-1 flex justify-center xl:hidden'>
           <div className='text-3xl lg:text-4xl xs:ml-1 lg:ml-8'>
@@ -84,22 +85,22 @@ export default function Navbar({
         </div>
 
         <div className='hidden xl:flex flex-1 space-x-6 text-black'>
-          {/* {headerMenus.map((menu) => (
+          {headerMenus.map((menu) => (
             <DropdownMenu
               key={menu.name}
               label={menu.name}
               items={menu.subItems}
             />
-          ))} */}
+          ))}
         </div>
 
         <div className='flex items-center'>
-          {/* <NavIcons
+          <NavIcons
             site={site}
             siteName={site.name}
             categories={categories}
             translations={translations}
-          /> */}
+          />
         </div>
       </nav>
     </>
