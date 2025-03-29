@@ -4,9 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
-import MdEditor from 'react-markdown-editor-lite'
-import ReactMarkdown from 'react-markdown'
-import 'react-markdown-editor-lite/lib/index.css'
+import dynamic from 'next/dynamic'
 import { Button } from '@/components/ui/button'
 import {
   Form,
@@ -23,6 +21,9 @@ import { IWebPage } from '@/lib/db/models/web-page.model'
 import { WebPageInputSchema, WebPageUpdateSchema } from '@/lib/validator'
 import { Checkbox } from '@/components/ui/checkbox'
 import { toSlug } from '@/lib/utils'
+
+// Dynamically import the Markdown editor (client-side only)
+const MDEditor = dynamic(() => import('@uiw/react-md-editor'), { ssr: false })
 
 // Define the type for the form values, making _id optional
 type WebPageFormValues = z.infer<typeof WebPageInputSchema> & { _id?: string }
@@ -155,11 +156,11 @@ const WebPageForm = ({
               <FormItem className='w-full'>
                 <FormLabel>Content</FormLabel>
                 <FormControl>
-                  <MdEditor
-                    {...field}
-                    style={{ height: '500px' }}
-                    renderHTML={(text) => <ReactMarkdown>{text}</ReactMarkdown>}
-                    onChange={({ text }) => form.setValue('content', text)}
+                  <MDEditor
+                    value={field.value}
+                    onChange={(value) => form.setValue('content', value || '')}
+                    height={500}
+                    preview='live'
                   />
                 </FormControl>
                 <FormMessage />
