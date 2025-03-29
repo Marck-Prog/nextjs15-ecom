@@ -2,6 +2,12 @@
 
 @custom-variant dark (&:is(.dark *));
 
+body {
+  font-family: var(--font-roboto-condensed), sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -119,9 +125,9 @@
   }
   body {
     @apply bg-background text-foreground;
-    background-color: oklch(1 0 0) !important; /* Force white background */
+    background-color: oklch(1 0 0) !important;
   }
-  /* Target all ShadCN buttons */
+
   button,
   [role='button'] {
     @apply cursor-pointer;
@@ -174,4 +180,106 @@ a.highlight-link {
 
 .web-page-content p {
   @apply py-2;
+}
+
+@layer utilities {
+  .web-page-content p {
+    @apply py-2;
+  }
+  .highlight-link a,
+  a.highlight-link {
+    @apply text-sky-700 hover:text-orange-700 hover:underline;
+  }
+  .header-button {
+    @apply cursor-pointer p-1 rounded;
+  }
+  .item-button {
+    @apply p-3;
+  }
+  .h1-bold {
+    @apply font-bold text-2xl lg:text-3xl;
+  }
+  .h2-bold {
+    @apply font-bold text-lg lg:text-xl;
+  }
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+
+  .dropdown-menu-content {
+    width: 100vw !important;
+    left: 0 !important;
+    right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+
+.logo-image {
+  width: calc(80px + 5vw);
+  height: auto;
+}
+
+/* Search animation */
+.search-container {
+  display: flex;
+  align-items: center;
+}
+
+.expanded-search {
+  animation: slideIn 0.3s ease-in-out;
+}
+
+.animateIn {
+  animation: slideIn 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+.carousel-wrapper {
+  position: relative;
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  display: inline-flex;
+  animation: scroll 20s linear infinite;
+  width: max-content;
+}
+
+@media (max-width: 576px) {
+  .logo-image {
+    width: 80px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .logo-image {
+    width: 160px;
+  }
 }

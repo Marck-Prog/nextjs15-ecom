@@ -9,52 +9,75 @@ const config: Config = withUt({
   ],
   theme: {
     extend: {
+      screens: {
+        xs: '320px',
+        sm: '375px',
+        md: '425px',
+        lg: '768px',
+        xl: '1024px',
+        '2xl': '1440px',
+        '4xl': '2560px',
+      },
       colors: {
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
+        background: '#ffffff', // Static light background
+        foreground: '#000000', // Static light foreground
         card: {
-          DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))',
+          DEFAULT: '#f9f9f9',
+          foreground: '#000000',
         },
         popover: {
-          DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))',
+          DEFAULT: '#ffffff',
+          foreground: '#000000',
         },
         primary: {
-          DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))',
+          DEFAULT: '#000000', // Changed from #007bff (blue) to #000000 (black)
+          foreground: '#ffffff', // Kept white for contrast
         },
         secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))',
+          DEFAULT: '#6c757d',
+          foreground: '#ffffff',
         },
         muted: {
-          DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))',
+          DEFAULT: '#e5e7eb',
+          foreground: '#6b7280',
         },
-        accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))',
-        },
+        // accent: {
+        //   DEFAULT: '#00b4d8',
+        //   foreground: '#ffffff',
+        // },
         destructive: {
-          DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground))',
+          DEFAULT: '#dc3545',
+          foreground: '#ffffff',
         },
-        border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))',
+        border: '#d1d5db',
+        input: '#e5e7eb',
+        ring: '#000000', // Changed from #007bff (blue) to #000000 (black) to match primary
         chart: {
-          '1': 'hsl(var(--chart-1))',
-          '2': 'hsl(var(--chart-2))',
-          '3': 'hsl(var(--chart-3))',
-          '4': 'hsl(var(--chart-4))',
-          '5': 'hsl(var(--chart-5))',
+          '1': '#4dabf7',
+          '2': '#37b24d',
+          '3': '#f76707',
+          '4': '#f59f00',
+          '5': '#7048e8',
         },
       },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
+      },
+      animation: {
+        scroll: 'scroll 20s linear infinite',
+        'slide-up': 'slide-up 0.3s ease-out',
+      },
+      keyframes: {
+        scroll: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+        'slide-up': {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
       },
     },
   },
