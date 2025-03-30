@@ -50,7 +50,7 @@ export default function LanguageSwitcher() {
   return (
     <>
       {/* Currency/Language - Hidden on small screens */}
-      <div className='hidden xl:flex items-center space-x-1'>
+      <div className='hidden xl:flex items-center'>
         {currentCurrency?.flag && currentCurrency.flag !== '' ? (
           <Image
             src={currentCurrency.flag}
@@ -69,7 +69,7 @@ export default function LanguageSwitcher() {
         </span>
         <span className='text-black font-bold'>{currentCurrency.code}</span>
       </div>
-      <div className='ml-3 hidden lg:flex hover:bg-white'>
+      <div className='ml-3 hidden lg:flex hover:bg-white mr-5'>
         <DropdownMenu open={open} onOpenChange={setOpen}>
           <DropdownMenuTrigger className='focus:outline-none'>
             <div className='flex items-center gap-1 mb-1'>

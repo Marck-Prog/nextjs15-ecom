@@ -9,55 +9,46 @@ const config: Config = withUt({
   ],
   theme: {
     extend: {
-      screens: {
-        xs: '320px',
-        sm: '375px',
-        md: '425px',
-        lg: '768px',
-        xl: '1024px',
-        '2xl': '1440px',
-        '4xl': '2560px',
-      },
       colors: {
-        background: '#ffffff', // Static light background
-        foreground: '#000000', // Static light foreground
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
         card: {
-          DEFAULT: '#f9f9f9',
-          foreground: '#000000',
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))',
         },
         popover: {
-          DEFAULT: '#ffffff',
-          foreground: '#000000',
+          DEFAULT: 'hsl(var(--popover))',
+          foreground: 'hsl(var(--popover-foreground))',
         },
         primary: {
-          DEFAULT: '#000000', // Changed from #007bff (blue) to #000000 (black)
-          foreground: '#ffffff', // Kept white for contrast
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))',
         },
         secondary: {
-          DEFAULT: '#6c757d',
-          foreground: '#ffffff',
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))',
         },
         muted: {
-          DEFAULT: '#e5e7eb',
-          foreground: '#6b7280',
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))',
         },
-        // accent: {
-        //   DEFAULT: '#00b4d8',
-        //   foreground: '#ffffff',
-        // },
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))',
+        },
         destructive: {
-          DEFAULT: '#dc3545',
-          foreground: '#ffffff',
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))',
         },
-        border: '#d1d5db',
-        input: '#e5e7eb',
-        ring: '#000000', // Changed from #007bff (blue) to #000000 (black) to match primary
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
         chart: {
-          '1': '#4dabf7',
-          '2': '#37b24d',
-          '3': '#f76707',
-          '4': '#f59f00',
-          '5': '#7048e8',
+          '1': 'hsl(var(--chart-1))',
+          '2': 'hsl(var(--chart-2))',
+          '3': 'hsl(var(--chart-3))',
+          '4': 'hsl(var(--chart-4))',
+          '5': 'hsl(var(--chart-5))',
         },
       },
       borderRadius: {

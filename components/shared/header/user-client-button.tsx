@@ -16,20 +16,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export default function UserButtonClient() {
-  const { data: session, status } = useSession()
+  const { data: session } = useSession()
   const t = useTranslations('Header')
-
-  if (status === 'loading') {
-    return (
-      <Button
-        variant='ghost'
-        size='icon'
-        className='flex items-center justify-center w-10 h-10 hover:bg-white focus:outline-none'
-      >
-        <UserRound className='h-5 w-5' />
-      </Button>
-    )
-  }
 
   const userImage = session?.user?.image
 
@@ -39,7 +27,7 @@ export default function UserButtonClient() {
         <Button
           variant='ghost'
           size='icon'
-          className='flex items-center justify-center w-10 h-10 hover:bg-white bg:white focus:outline-none rounded-full'
+          className='relative w-10 h-10 hover:bg-white bg:white focus:outline-none rounded-full'
         >
           {userImage ? (
             <Image
@@ -50,7 +38,7 @@ export default function UserButtonClient() {
               className='rounded-full'
             />
           ) : (
-            <UserRound className='h-5 w-5' />
+            <UserRound className='h-5 w-5 max-sm:ml-12' />
           )}
         </Button>
       </DropdownMenuTrigger>
@@ -124,7 +112,7 @@ export default function UserButtonClient() {
               <Link href='/sign-in'>
                 <Button
                   variant='ghost'
-                  className='w-full text-left px-4 py-2 text-white bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 transition duration-150 ease-in-out rounded-md'
+                  className='w-full text-left px-4 py-2 text-white bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 hover:text-white transition duration-150 ease-in-out rounded-md border-none'
                 >
                   {t('Sign in')}
                 </Button>

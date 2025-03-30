@@ -84,7 +84,7 @@ const DropdownMenu = ({ label, items }: DropdownMenuProps) => {
         slotProps={{
           paper: {
             sx: {
-              width: '99vw',
+              width: '100vw',
               maxWidth: 'none',
               height: '60vh',
               padding: '30px 120px 0 120px',
@@ -93,8 +93,8 @@ const DropdownMenu = ({ label, items }: DropdownMenuProps) => {
               borderRadius: 0,
               overflowY: 'auto',
               boxSizing: 'border-box',
-              borderTop: '1px solid #ccc',
-              mt: '20px',
+              borderTop: '0.5px solid #ccc',
+              mt: '10px',
               left: 0,
             },
           },
