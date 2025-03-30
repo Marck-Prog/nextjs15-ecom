@@ -45,9 +45,10 @@
     "Best Selling Products": "Best Selling Products",
     "Related to items that you've viewed": "Related to items that you've viewed",
     "Your browsing history": "Your browsing history",
-    "Most Popular Shoes For Sale": "Rock the Look with Budget Friendly Graphico!",
-    "Best Sellers in T-Shirts": "Level Up Your Wardrobe with Tee-riffic Shirts",
-    "Best Deals on Wrist Watches": "Deals Too Good to be Miss Out!"
+    "Most Popular Shoes For Sale": "Most Popular Shoes For Sale",
+    "Best Sellers in T-Shirts": "Best Sellers in T-Shirts",
+    "Best Deals on Wrist Watches": "Best Deals on Wrist Watches",
+    "Community Favorites": "Community Favorites"
   },
   "Product": {
     "Added to Cart": "Added to Cart",
@@ -123,7 +124,8 @@
     "Proceed to Checkout": "Proceed to Checkout",
     "Delete": "Delete",
     "Update": "Update",
-    "Checkout": "Checkout"
+    "Checkout": "Checkout",
+    "Empty": "Your cart is empty"
   },
   "Search": {
     "for": "for",

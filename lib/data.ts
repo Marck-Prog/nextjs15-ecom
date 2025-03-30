@@ -1364,6 +1364,7 @@ We also provide helpful resources such as order tracking, product guides, and FA
       isPublished: true,
     },
   ],
+
   settings: [
     {
       common: {
@@ -1374,37 +1375,38 @@ We also provide helpful resources such as order tracking, product guides, and FA
         pageSize: 9,
       },
       site: {
-        name: 'NxtAmzn',
+        name: 'Graphico',
         description:
-          'NxtAmzn is a sample Ecommerce website built with Next.js, Tailwind CSS, and MongoDB.',
-        keywords: 'Next Ecommerce, Next.js, Tailwind CSS, MongoDB',
-        url: 'https://next-mongo-ecommerce-final.vercel.app',
+          'Graphico is a premier ecommerce platform built with Next.js, Tailwind CSS, and MongoDB, offering quality products and exceptional service.',
+        keywords: 'Graphico Ecommerce, Next.js, Tailwind CSS, MongoDB',
+        url: 'http://localhost:3000',
         logo: '/icons/logo.svg',
-        slogan: 'Spend less, enjoy more.',
-        author: 'Next Ecommerce',
-        copyright: '2000-2024, Next-Ecommerce.com, Inc. or its affiliates',
-        email: 'admin@example.com',
-        address: '123, Main Street, Anytown, CA, Zip 12345',
-        phone: '+1 (123) 456-7890',
+        slogan: '| Shop smart, live better.',
+        author: 'Graphico Team',
+        copyright: '2000-2025, Graphico.ph, Inc. or its affiliates',
+        email: 'support@graphico.com',
+        address:
+          'Blk 10 Lot 5, Salawag Road, Dasmariñas City, Cavite 4114, Philippines',
+        phone: '+63 (46) 123-4567',
       },
       carousels: [
         {
-          title: 'Most Popular Shoes For Sale',
+          title: 'Rock the Look with Budget Friendly Graphico!',
           buttonCaption: 'Shop Now',
           image: '/images/banner3.jpg',
-          url: '/search?category=Shoes',
+          url: '/search?tag=new-arrival',
         },
         {
-          title: 'Best Sellers in T-Shirts',
+          title: 'Level Up Your Wardrobe with Tee-riffic Shirts',
           buttonCaption: 'Shop Now',
           image: '/images/banner1.jpg',
-          url: '/search?category=T-Shirts',
+          url: '/search?tag=featured',
         },
         {
-          title: 'Best Deals on Wrist Watches',
+          title: 'Deals Too Good to be Miss Out!',
           buttonCaption: 'See More',
           image: '/images/banner2.jpg',
-          url: '/search?category=Wrist Watches',
+          url: '/search?tag=best-seller',
         },
       ],
       availableLanguages: i18n.locales.map((locale) => ({

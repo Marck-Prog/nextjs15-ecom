@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-// import MobileMenu from './mobile-menu'
 import TopBar from './topbar'
 import { MenuItem } from '@/types'
 import DropdownMenu from './dropdown'
