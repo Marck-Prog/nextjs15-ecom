@@ -29,9 +29,9 @@ export default async function SignInPage(props: {
   }
 
   return (
-    <div className='flex w-full max-w-4xl'>
+    <div className='flex flex-col md:flex-row w-full max-w-4xl mx-auto'>
       {/* Left Section: Login Form */}
-      <div className='w-1/2 p-8'>
+      <div className='w-full md:w-1/2 p-6 md:p-8'>
         {/* Logo */}
         <div className='flex items-center mb-6'>
           <span className='text-2xl font-bold text-gray-800'>{site.name}</span>
@@ -58,9 +58,9 @@ export default async function SignInPage(props: {
       </div>
 
       {/* Right Section: Promotional Image and Text */}
-      <div className='w-1/2 relative'>
+      <div className='hidden md:block w-full md:w-1/2 relative min-h-[300px]'>
         <Image
-          src='/images/banner2.jpg' // Replace with your actual image path
+          src='/images/signup.jpg'
           alt='Promotional Image'
           layout='fill'
           objectFit='cover'

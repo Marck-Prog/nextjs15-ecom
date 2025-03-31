@@ -27,6 +27,9 @@ export async function generateMetadata() {
     },
     description: description,
     metadataBase: new URL(url),
+    icons: {
+      icon: '/icons/favicon.png',
+    },
   }
 }
 

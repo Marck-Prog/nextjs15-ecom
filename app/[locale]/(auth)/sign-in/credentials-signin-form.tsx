@@ -108,7 +108,7 @@ export default function CredentialsSignInForm() {
             </FormItem>
           )}
         />
-        <div className='flex items-center justify-between mb-6'>
+        <div className='flex flex-col sm:flex-row items-center justify-between mb-6 space-y-2 sm:space-y-0'>
           <label className='flex items-center'>
             <input type='checkbox' className='mr-2' />
             <span className='text-gray-600'>Remember for 30 days</span>
@@ -117,6 +117,7 @@ export default function CredentialsSignInForm() {
             Forgot password?
           </Link>
         </div>
+
         <Button
           type='submit'
           className='w-full bg-black hover:bg-gray-800 text-white rounded-sm'

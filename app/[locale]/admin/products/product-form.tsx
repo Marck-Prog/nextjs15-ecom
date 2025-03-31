@@ -36,12 +36,12 @@ type ProductFormValues<T extends 'Create' | 'Update'> = T extends 'Create'
 const productDefaultValues: ProductInputValues =
   process.env.NODE_ENV === 'development'
     ? {
-        name: 'Sample Product',
-        slug: 'sample-product',
-        category: 'Sample Category',
-        images: ['/images/p11-1.jpg'],
-        brand: 'Sample Brand',
-        description: 'This is a sample description of the product.',
+        name: '',
+        slug: '',
+        category: '',
+        images: [''],
+        brand: '',
+        description: '',
         price: 99.99,
         listPrice: 0,
         countInStock: 15,
@@ -256,6 +256,60 @@ const ProductForm = ({
                     {...field}
                   />
                 </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+
+        {/* Added Colors and Sizes Fields */}
+        <div className='flex flex-col gap-5 md:flex-row'>
+          <FormField
+            control={form.control}
+            name='colors'
+            render={({ field }) => (
+              <FormItem className='w-full'>
+                <FormLabel>Colors</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder='Enter colors (e.g., Red, Blue, Green)'
+                    {...field}
+                    onChange={(e) =>
+                      field.onChange(
+                        e.target.value.split(',').map((c) => c.trim())
+                      )
+                    }
+                    value={field.value?.join(', ') || ''}
+                  />
+                </FormControl>
+                <FormDescription>
+                  Enter colors separated by commas.
+                </FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name='sizes'
+            render={({ field }) => (
+              <FormItem className='w-full'>
+                <FormLabel>Sizes</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder='Enter sizes (e.g., S, M, L)'
+                    {...field}
+                    onChange={(e) =>
+                      field.onChange(
+                        e.target.value.split(',').map((s) => s.trim())
+                      )
+                    }
+                    value={field.value?.join(', ') || ''}
+                  />
+                </FormControl>
+                <FormDescription>
+                  Enter sizes separated by commas.
+                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}

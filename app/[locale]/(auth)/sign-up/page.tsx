@@ -1,9 +1,7 @@
 import { getSetting } from '@/lib/actions/setting.actions'
 import { Metadata } from 'next'
 import { redirect } from 'next/navigation'
-
 import { auth } from '@/auth'
-
 import Image from 'next/image'
 import SignUpForm from './signup-form'
 
@@ -27,34 +25,19 @@ export default async function SignUpPage(props: {
   }
 
   return (
-    // <div className='w-full'>
-    //   <Card>
-    //     <CardHeader>
-    //       <CardTitle className='text-2xl'>Create account</CardTitle>
-    //     </CardHeader>
-    //     <CardContent>
-    //       <SignUpForm />
-    //     </CardContent>
-    //   </Card>
-    // </div>
-
-    <div className='flex w-full max-w-4xl'>
-      {/* Left Section: Login Form */}
-      <div className='w-1/2 p-8'>
-        {/* Logo */}
-        {/* <div className='flex items-center mb-6'>
-          <span className='text-2xl font-bold text-gray-800'>{site.name}</span>
-        </div> */}
-
+    <div className='flex flex-col md:flex-row w-full max-w-4xl mx-auto'>
+      {/* Left Section: Sign Up Form */}
+      <div className='w-full md:w-1/2 p-6 md:p-8'>
         <h2 className='text-2xl font-bold text-gray-800 mb-2'>
           Create {site.name} Account
         </h2>
         <SignUpForm />
-      </div>{' '}
+      </div>
+
       {/* Right Section: Promotional Image and Text */}
-      <div className='w-1/2 relative'>
+      <div className='hidden md:block w-full md:w-1/2 relative min-h-[300px]'>
         <Image
-          src='/images/banner2.jpg' // Replace with your actual image path
+          src='/images/login.jpg'
           alt='Promotional Image'
           layout='fill'
           objectFit='cover'

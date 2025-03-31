@@ -23,10 +23,10 @@ import { isRedirectError } from 'next/dist/client/components/redirect-error'
 const signUpDefaultValues =
   process.env.NODE_ENV === 'development'
     ? {
-        name: 'john doe',
-        email: 'john@me.com',
-        password: '123456',
-        confirmPassword: '123456',
+        name: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
       }
     : {
         name: '',
@@ -82,18 +82,12 @@ export default function CredentialsSignUpForm() {
       <form onSubmit={handleSubmit(onSubmit)} className='space-y-4 mt-4'>
         <input type='hidden' name='callbackUrl' value={callbackUrl} />
 
-        {/* <div className='flex items-center mb-4'>
-          <hr className='w-full border-gray-300' />
-          <span className='px-3 text-gray-500'>or</span>
-          <hr className='w-full border-gray-300' />
-        </div> */}
-
         <FormField
           control={control}
           name='name'
           render={({ field }) => (
             <FormItem>
-              <FormLabel className='text-gray-700 mt-4'>Name</FormLabel>
+              <FormLabel className='text-gray-700'>Name</FormLabel>
               <FormControl>
                 <Input
                   className='border-gray-300 focus:ring-2 focus:ring-blue-500 rounded-sm'
@@ -162,12 +156,12 @@ export default function CredentialsSignUpForm() {
           )}
         />
 
-        <div className='flex items-center justify-between mb-6'>
+        <div className='flex flex-col sm:flex-row items-center justify-between mb-6 space-y-2 sm:space-y-0'>
           <label className='flex items-center'>
             <input type='checkbox' className='mr-2' />
-            <span className='text-gray-600'>Remember for 30 days</span>
+            <span className='text-gray-600 text-sm'>Remember for 30 days</span>
           </label>
-          <Link href='#' className='text-blue-500 hover:underline'>
+          <Link href='#' className='text-blue-500 hover:underline text-sm'>
             Forgot password?
           </Link>
         </div>
@@ -180,7 +174,7 @@ export default function CredentialsSignUpForm() {
         </Button>
 
         <div className='text-sm text-gray-600'>
-          By creating an account, you agree to {site.name}&rsquo;s{' '}
+          By creating an account, you agree to {site.name}’s{' '}
           <Link
             href='/page/conditions-of-use'
             className='text-blue-500 hover:underline'
@@ -195,7 +189,6 @@ export default function CredentialsSignUpForm() {
             Privacy Notice
           </Link>
           .
-          <br />
           <div className='mt-4 text-center'>
             <p className='text-gray-600'>
               Already have an account?{' '}
@@ -204,7 +197,7 @@ export default function CredentialsSignUpForm() {
                 href={`/sign-in?callbackUrl=${callbackUrl}`}
               >
                 Sign In for {site.name}
-              </Link>{' '}
+              </Link>
             </p>
           </div>
         </div>
