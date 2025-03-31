@@ -307,6 +307,7 @@ const ProductForm = ({
                               description: `ERROR! ${error.message}`,
                             })
                           }}
+                          className='upload-button'
                         />
                       </FormControl>
                     </div>

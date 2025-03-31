@@ -1,6 +1,5 @@
 'use client'
 import { redirect, useSearchParams } from 'next/navigation'
-
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import Link from 'next/link'
@@ -19,7 +18,6 @@ import { registerUser, signInWithCredentials } from '@/lib/actions/user.actions'
 import { toast } from '@/hooks/use-toast'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { UserSignUpSchema } from '@/lib/validator'
-import { Separator } from '@/components/ui/separator'
 import { isRedirectError } from 'next/dist/client/components/redirect-error'
 
 const signUpDefaultValues =
@@ -37,7 +35,7 @@ const signUpDefaultValues =
         confirmPassword: '',
       }
 
-export default function CredentialsSignInForm() {
+export default function CredentialsSignUpForm() {
   const {
     setting: { site },
   } = useSettingStore()
@@ -81,85 +79,133 @@ export default function CredentialsSignInForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className='space-y-4 mt-4'>
         <input type='hidden' name='callbackUrl' value={callbackUrl} />
-        <div className='space-y-6'>
-          <FormField
-            control={control}
-            name='name'
-            render={({ field }) => (
-              <FormItem className='w-full'>
-                <FormLabel>Name</FormLabel>
-                <FormControl>
-                  <Input placeholder='Enter name address' {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
 
-          <FormField
-            control={control}
-            name='email'
-            render={({ field }) => (
-              <FormItem className='w-full'>
-                <FormLabel>Email</FormLabel>
-                <FormControl>
-                  <Input placeholder='Enter email address' {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+        {/* <div className='flex items-center mb-4'>
+          <hr className='w-full border-gray-300' />
+          <span className='px-3 text-gray-500'>or</span>
+          <hr className='w-full border-gray-300' />
+        </div> */}
 
-          <FormField
-            control={control}
-            name='password'
-            render={({ field }) => (
-              <FormItem className='w-full'>
-                <FormLabel>Password</FormLabel>
-                <FormControl>
-                  <Input
-                    type='password'
-                    placeholder='Enter password'
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={control}
-            name='confirmPassword'
-            render={({ field }) => (
-              <FormItem className='w-full'>
-                <FormLabel>Confirm Password</FormLabel>
-                <FormControl>
-                  <Input
-                    type='password'
-                    placeholder='Confirm Password'
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <div>
-            <Button type='submit'>Sign Up</Button>
-          </div>
-          <div className='text-sm'>
-            By creating an account, you agree to {site.name}&apos;s{' '}
-            <Link href='/page/conditions-of-use'>Conditions of Use</Link> and{' '}
-            <Link href='/page/privacy-policy'> Privacy Notice. </Link>
-          </div>
-          <Separator className='mb-4' />
-          <div className='text-sm'>
-            Already have an account?{' '}
-            <Link className='link' href={`/sign-in?callbackUrl=${callbackUrl}`}>
-              Sign In
-            </Link>
+        <FormField
+          control={control}
+          name='name'
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className='text-gray-700 mt-4'>Name</FormLabel>
+              <FormControl>
+                <Input
+                  className='border-gray-300 focus:ring-2 focus:ring-blue-500 rounded-sm'
+                  placeholder='Enter name'
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={control}
+          name='email'
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className='text-gray-700'>Email address</FormLabel>
+              <FormControl>
+                <Input
+                  className='border-gray-300 focus:ring-2 focus:ring-blue-500 rounded-sm'
+                  placeholder='Email address'
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={control}
+          name='password'
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className='text-gray-700'>Password</FormLabel>
+              <FormControl>
+                <Input
+                  type='password'
+                  className='border-gray-300 focus:ring-2 focus:ring-blue-500 rounded-sm'
+                  placeholder='Password'
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={control}
+          name='confirmPassword'
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className='text-gray-700'>Confirm Password</FormLabel>
+              <FormControl>
+                <Input
+                  type='password'
+                  className='border-gray-300 focus:ring-2 focus:ring-blue-500 rounded-sm'
+                  placeholder='Confirm Password'
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <div className='flex items-center justify-between mb-6'>
+          <label className='flex items-center'>
+            <input type='checkbox' className='mr-2' />
+            <span className='text-gray-600'>Remember for 30 days</span>
+          </label>
+          <Link href='#' className='text-blue-500 hover:underline'>
+            Forgot password?
+          </Link>
+        </div>
+
+        <Button
+          type='submit'
+          className='w-full bg-black hover:bg-gray-800 text-white rounded-sm'
+        >
+          Sign Up
+        </Button>
+
+        <div className='text-sm text-gray-600'>
+          By creating an account, you agree to {site.name}&rsquo;s{' '}
+          <Link
+            href='/page/conditions-of-use'
+            className='text-blue-500 hover:underline'
+          >
+            Conditions of Use
+          </Link>{' '}
+          and{' '}
+          <Link
+            href='/page/privacy-policy'
+            className='text-blue-500 hover:underline'
+          >
+            Privacy Notice
+          </Link>
+          .
+          <br />
+          <div className='mt-4 text-center'>
+            <p className='text-gray-600'>
+              Already have an account?{' '}
+              <Link
+                className='text-blue-500 hover:underline'
+                href={`/sign-in?callbackUrl=${callbackUrl}`}
+              >
+                Sign In for {site.name}
+              </Link>{' '}
+            </p>
           </div>
         </div>
       </form>

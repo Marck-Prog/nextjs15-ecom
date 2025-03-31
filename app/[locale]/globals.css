@@ -176,6 +176,10 @@ a.highlight-link {
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
+
+  .upload-button {
+    @apply bg-blue-500 text-white px-6 py-1 rounded-md hover:bg-blue-400 inline-block;
+  }
 }
 
 .logo-image {
