@@ -56,7 +56,7 @@ const ImageHover = ({
       {/* Add to Cart Button with Smooth Bottom-to-Top Animation */}
       <div
         className={`absolute left-1/2 transform -translate-x-1/2 transition-all duration-500 ease-in-out ${
-          isHovered ? 'opacity-100 top-50' : 'opacity-0 top-full'
+          isHovered ? 'opacity-100 top-40' : 'opacity-0 top-full'
         }`}
       >
         <AddToCart

@@ -57,14 +57,13 @@ export default function CurrencyForm({
       <CardContent className='space-y-4'>
         <div className='space-y-4'>
           {fields.map((field, index) => (
-            <div key={field.id} className='flex   gap-2'>
+            <div key={field.id} className='flex gap-2'>
               <FormField
                 control={form.control}
                 name={`availableCurrencies.${index}.name`}
                 render={({ field }) => (
                   <FormItem>
-                    {' '}
-                    {index == 0 && <FormLabel>Name</FormLabel>}
+                    {index === 0 && <FormLabel>Name</FormLabel>}
                     <FormControl>
                       <Input {...field} placeholder='Name' />
                     </FormControl>
@@ -74,13 +73,12 @@ export default function CurrencyForm({
                   </FormItem>
                 )}
               />
-
               <FormField
                 control={form.control}
                 name={`availableCurrencies.${index}.code`}
                 render={({ field }) => (
                   <FormItem>
-                    {index == 0 && <FormLabel>Code</FormLabel>}
+                    {index === 0 && <FormLabel>Code</FormLabel>}
                     <FormControl>
                       <Input {...field} placeholder='Code' />
                     </FormControl>
@@ -95,7 +93,7 @@ export default function CurrencyForm({
                 name={`availableCurrencies.${index}.symbol`}
                 render={({ field }) => (
                   <FormItem>
-                    {index == 0 && <FormLabel>Symbol</FormLabel>}
+                    {index === 0 && <FormLabel>Symbol</FormLabel>}
                     <FormControl>
                       <Input {...field} placeholder='Symbol' />
                     </FormControl>
@@ -105,15 +103,18 @@ export default function CurrencyForm({
                   </FormItem>
                 )}
               />
-
               <FormField
                 control={form.control}
                 name={`availableCurrencies.${index}.convertRate`}
                 render={({ field }) => (
                   <FormItem>
-                    {index == 0 && <FormLabel>Convert Rate</FormLabel>}
+                    {index === 0 && <FormLabel>Convert Rate</FormLabel>}
                     <FormControl>
-                      <Input {...field} placeholder='Convert Rate' />
+                      <Input
+                        {...field}
+                        placeholder='Convert Rate'
+                        type='number'
+                      />
                     </FormControl>
                     <FormMessage>
                       {
@@ -125,12 +126,12 @@ export default function CurrencyForm({
                 )}
               />
               <div>
-                {index == 0 && <div>Action</div>}
+                {index === 0 && <div>Action</div>}
                 <Button
                   type='button'
                   disabled={fields.length === 1}
                   variant='outline'
-                  className={index == 0 ? 'mt-2' : ''}
+                  className={index === 0 ? 'mt-2' : ''}
                   onClick={() => {
                     remove(index)
                   }}
@@ -145,7 +146,13 @@ export default function CurrencyForm({
             type='button'
             variant={'outline'}
             onClick={() =>
-              append({ name: '', code: '', symbol: '', convertRate: 1 })
+              append({
+                name: '',
+                code: '',
+                symbol: '',
+                convertRate: 1,
+                flag: '',
+              })
             }
           >
             Add Currency

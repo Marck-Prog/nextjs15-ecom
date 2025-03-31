@@ -1,12 +1,5 @@
 import { IUserInput } from '@/types'
-import {
-  Document,
-  // InferSchemaType,
-  Model,
-  model,
-  models,
-  Schema,
-} from 'mongoose'
+import { Document, Model, model, models, Schema } from 'mongoose'
 
 export interface IUser extends Document, IUserInput {
   _id: string
@@ -20,7 +13,7 @@ const userSchema = new Schema<IUser>(
     name: { type: String, required: true },
     role: { type: String, required: true, default: 'User' },
     password: { type: String },
-    image: { type: String },
+    image: { type: String, required: false },
     emailVerified: { type: Boolean, default: false },
   },
   {

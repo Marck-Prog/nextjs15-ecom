@@ -5,6 +5,7 @@ import Setting from '../db/models/setting.model'
 import { connectToDatabase } from '../db'
 import { formatError } from '../utils'
 import { cookies } from 'next/headers'
+import { SettingInputSchema } from '../validator'
 
 const globalForSettings = global as unknown as {
   cachedSettings: ISettingInput | null
@@ -17,7 +18,6 @@ export const getNoCachedSetting = async (): Promise<ISettingInput> => {
 
 export const getSetting = async (): Promise<ISettingInput> => {
   if (!globalForSettings.cachedSettings) {
-    console.log('hit db')
     await connectToDatabase()
     const setting = await Setting.findOne().lean()
     globalForSettings.cachedSettings = setting
@@ -27,16 +27,25 @@ export const getSetting = async (): Promise<ISettingInput> => {
   return globalForSettings.cachedSettings as ISettingInput
 }
 
+// lib/setting.actions.ts
 export const updateSetting = async (newSetting: ISettingInput) => {
   try {
+    // Validate the input using SettingInputSchema
+    const validatedSetting = SettingInputSchema.parse(newSetting)
+    console.log('Validated setting:', JSON.stringify(validatedSetting, null, 2))
+
     await connectToDatabase()
-    const updatedSetting = await Setting.findOneAndUpdate({}, newSetting, {
-      upsert: true,
-      new: true,
-    }).lean()
+    const updatedSetting = await Setting.findOneAndUpdate(
+      {},
+      validatedSetting,
+      {
+        upsert: true,
+        new: true,
+      }
+    ).lean()
     globalForSettings.cachedSettings = JSON.parse(
       JSON.stringify(updatedSetting)
-    ) // Update the cache
+    )
     return {
       success: true,
       message: 'Setting updated successfully',
@@ -46,7 +55,6 @@ export const updateSetting = async (newSetting: ISettingInput) => {
   }
 }
 
-// Server action to update the currency cookie
 export const setCurrencyOnServer = async (newCurrency: string) => {
   'use server'
   const cookiesStore = await cookies()

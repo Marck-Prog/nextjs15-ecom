@@ -89,10 +89,10 @@ export default function Navbar({
       </div>
 
       <nav
-        className={`mx-auto px-4 sm:px-6 lg:px-8 transition-all ${
+        className={`mx-auto px-4 sm:px-6 lg:px-8 transition-all bg-white ${
           isScrolled
-            ? 'fixed top-0 left-0 right-0 bg-white duration-100 shadow-md z-40'
-            : 'relative bg-white duration-100 mt-10'
+            ? 'fixed top-0 left-0 right-0 shadow-md z-40 duration-100'
+            : 'relative duration-100 mt-10'
         }`}
       >
         <div className='flex justify-between items-center h-16'>
@@ -175,7 +175,13 @@ export default function Navbar({
           {/* Logo */}
           <div className='animateIn' style={{ animationDelay: '0s' }}>
             <Link href='/'>
-              <Image src={logo} alt={`${name} logo`} width={150} height={50} />
+              <Image
+                src={logo}
+                alt={`${name} logo`}
+                width={150}
+                height={50}
+                className='hidden sm:flex '
+              />
             </Link>
           </div>
 
@@ -192,7 +198,7 @@ export default function Navbar({
                 {/* Hidden Select Input for Form Submission */}
                 <Select name='category'>
                   <SelectTrigger
-                    className='border-none bg-transparent text-gray-600 focus:ring-0 rounded-l-full pl-4 pr-2 h-10 w-auto'
+                    className='border-none bg-transparenttext-gray-600 focus:ring-0 rounded-l-full pl-4 pr-2 h-10 w-auto'
                     style={{ boxShadow: 'none' }}
                   >
                     <SelectValue placeholder={translations.all} />
@@ -244,9 +250,9 @@ export default function Navbar({
 
         {/* Popular Search Terms */}
         {isSearchOpen && (
-          <div className='absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-4 py-2 text-center'>
+          <div className='absolute top-12 left-0 w-full px-4 py-6 text-center transform translate-y-0 sm:top-1/3 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 md:py-4 z-10'>
             <p
-              className='animateIn text-sm font-semibold text-gray-400'
+              className='animateIn text-xs font-semibold text-gray-400 sm:text-sm'
               style={{ animationDelay: '0.5s' }}
             >
               Popular Search Terms
@@ -264,7 +270,7 @@ export default function Navbar({
               ].map((term, index) => (
                 <span
                   key={term}
-                  className='animateIn px-3 py-1 bg-[#1F1E20] rounded-full text-sm text-white cursor-pointer hover:bg-gray-600'
+                  className='animateIn px-2 py-1 bg-[#1F1E20] rounded-full text-xs text-white cursor-pointer hover:bg-gray-600 sm:px-3 sm:text-sm'
                   style={{ animationDelay: `${1 + index * 0.1}s` }}
                 >
                   {term}

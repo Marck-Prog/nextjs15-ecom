@@ -75,6 +75,7 @@ const settingSchema = new Schema<ISetting>(
           required: true,
           set: (value: string) => Buffer.from(value).toString('utf8'),
         },
+        flag: { type: String, required: false }, // Add the flag field
       },
     ],
     defaultCurrency: { type: String, required: true },

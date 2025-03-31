@@ -21,244 +21,6 @@ const users: IUserInput[] = [
     paymentMethod: 'Stripe',
     emailVerified: false,
   },
-  {
-    name: 'Jane',
-    email: 'jane@example.com',
-    password: bcrypt.hashSync('123456', 5),
-    role: 'User',
-    address: {
-      fullName: 'Jane Harris',
-      street: '222 Main St',
-      city: 'New York',
-      province: 'NY',
-      postalCode: '1002',
-      country: 'USA',
-      phone: '123-456-7890',
-    },
-    paymentMethod: 'Cash On Delivery',
-    emailVerified: false,
-  },
-  {
-    name: 'Jack',
-    email: 'jack@example.com',
-    password: bcrypt.hashSync('123456', 5),
-    role: 'User',
-    address: {
-      fullName: 'Jack Ryan',
-      street: '333 Main St',
-      city: 'New York',
-      province: 'NY',
-      postalCode: '1003',
-      country: 'USA',
-      phone: '123-456-7890',
-    },
-    paymentMethod: 'PayPal',
-    emailVerified: false,
-  },
-  {
-    name: 'Sarah',
-    email: 'sarah@example.com',
-    password: bcrypt.hashSync('123456', 5),
-    role: 'User',
-    address: {
-      fullName: 'Sarah Smith',
-      street: '444 Main St',
-      city: 'New York',
-      province: 'NY',
-      postalCode: '1005',
-      country: 'USA',
-      phone: '123-456-7890',
-    },
-    paymentMethod: 'Cash On Delivery',
-    emailVerified: false,
-  },
-  {
-    name: 'Michael',
-    email: 'michael@example.com',
-    password: bcrypt.hashSync('123456', 5),
-    role: 'User',
-    address: {
-      fullName: 'John Alexander',
-      street: '555 Main St',
-      city: 'New York',
-      province: 'NY',
-      postalCode: '1006',
-      country: 'USA',
-      phone: '123-456-7890',
-    },
-    paymentMethod: 'PayPal',
-    emailVerified: false,
-  },
-  {
-    name: 'Emily',
-    email: 'emily@example.com',
-    password: bcrypt.hashSync('123456', 5),
-    role: 'User',
-    address: {
-      fullName: 'Emily Johnson',
-      street: '666 Main St',
-      city: 'New York',
-      province: 'NY',
-      postalCode: '10001',
-      country: 'USA',
-      phone: '123-456-7890',
-    },
-    paymentMethod: 'Stripe',
-    emailVerified: false,
-  },
-  {
-    name: 'Alice',
-    email: 'alice@example.com',
-    password: bcrypt.hashSync('123456', 5),
-    role: 'User',
-    address: {
-      fullName: 'Alice Cooper',
-      street: '777 Main St',
-      city: 'New York',
-      province: 'NY',
-      postalCode: '10007',
-      country: 'USA',
-      phone: '123-456-7890',
-    },
-    paymentMethod: 'Cash On Delivery',
-    emailVerified: false,
-  },
-  {
-    name: 'Tom',
-    email: 'tom@example.com',
-    password: bcrypt.hashSync('123456', 5),
-    role: 'User',
-    address: {
-      fullName: 'Tom Hanks',
-      street: '888 Main St',
-      city: 'New York',
-      province: 'NY',
-      postalCode: '10008',
-      country: 'USA',
-      phone: '123-456-7890',
-    },
-    paymentMethod: 'Stripe',
-    emailVerified: false,
-  },
-  {
-    name: 'Linda',
-    email: 'linda@example.com',
-    password: bcrypt.hashSync('123456', 5),
-    role: 'User',
-    address: {
-      fullName: 'Linda Holmes',
-      street: '999 Main St',
-      city: 'New York',
-      province: 'NY',
-      postalCode: '10009',
-      country: 'USA',
-      phone: '123-456-7890',
-    },
-    paymentMethod: 'PayPal',
-    emailVerified: false,
-  },
-  {
-    name: 'George',
-    email: 'george@example.com',
-    password: bcrypt.hashSync('123456', 5),
-    role: 'User',
-    address: {
-      fullName: 'George Smith',
-      street: '101 First Ave',
-      city: 'New York',
-      province: 'NY',
-      postalCode: '10010',
-      country: 'USA',
-      phone: '123-456-7890',
-    },
-    paymentMethod: 'Stripe',
-    emailVerified: false,
-  },
-  {
-    name: 'Jessica',
-    email: 'jessica@example.com',
-    password: bcrypt.hashSync('123456', 5),
-    role: 'User',
-    address: {
-      fullName: 'Jessica Brown',
-      street: '102 First Ave',
-      city: 'New York',
-      province: 'NY',
-      postalCode: '10011',
-      country: 'USA',
-      phone: '123-456-7890',
-    },
-    paymentMethod: 'Cash On Delivery',
-    emailVerified: false,
-  },
-  {
-    name: 'Chris',
-    email: 'chris@example.com',
-    password: bcrypt.hashSync('123456', 5),
-    role: 'User',
-    address: {
-      fullName: 'Chris Evans',
-      street: '103 First Ave',
-      city: 'New York',
-      province: 'NY',
-      postalCode: '10012',
-      country: 'USA',
-      phone: '123-456-7890',
-    },
-    paymentMethod: 'PayPal',
-    emailVerified: false,
-  },
-  {
-    name: 'Samantha',
-    email: 'samantha@example.com',
-    password: bcrypt.hashSync('123456', 5),
-    role: 'User',
-    address: {
-      fullName: 'Samantha Wilson',
-      street: '104 First Ave',
-      city: 'New York',
-      province: 'NY',
-      postalCode: '10013',
-      country: 'USA',
-      phone: '123-456-7890',
-    },
-    paymentMethod: 'Stripe',
-    emailVerified: false,
-  },
-  {
-    name: 'David',
-    email: 'david@example.com',
-    password: bcrypt.hashSync('123456', 5),
-    role: 'User',
-    address: {
-      fullName: 'David Lee',
-      street: '105 First Ave',
-      city: 'New York',
-      province: 'NY',
-      postalCode: '10014',
-      country: 'USA',
-      phone: '123-456-7890',
-    },
-    paymentMethod: 'Cash On Delivery',
-    emailVerified: false,
-  },
-  {
-    name: 'Anna',
-    email: 'anna@example.com',
-    password: bcrypt.hashSync('123456', 5),
-    role: 'User',
-    address: {
-      fullName: 'Anna Smith',
-      street: '106 First Ave',
-      city: 'New York',
-      province: 'NY',
-      postalCode: '10015',
-      country: 'USA',
-      phone: '123-456-7890',
-    },
-    paymentMethod: 'PayPal',
-    emailVerified: false,
-  },
 ]
 
 const products: IProductInput[] = [
@@ -287,7 +49,6 @@ const products: IProductInput[] = [
       'Made with chemicals safer for human health and the environment',
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     colors: ['Green', 'Red', 'Black'],
-
     reviews: [],
   },
   {
@@ -318,10 +79,8 @@ const products: IProductInput[] = [
     countInStock: 12,
     description:
       'Made with sustainably sourced USA grown cotton; Shoulder-to-shoulder tape; double-needle coverstitched front neck; Set-in sleeves; Rib cuffs with concealed seams; Seamless body for a wide printing area',
-
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     colors: ['Yellow', 'Red', 'Black'],
-
     reviews: [],
   },
   {
@@ -349,7 +108,6 @@ const products: IProductInput[] = [
       'The Jerzees long sleeve t-shirt is made with dri-power technology that wicks away moisture to keep you cool and dry throughout your day. We also included a rib collar and cuffs for added durability, and a lay-flat collar for comfort. If you are looking for a versatile shirt that you can wear throughout the transitioning seasons, then look no further.',
     sizes: ['XL', 'XXL'],
     colors: ['Green', 'White'],
-
     reviews: [],
   },
   {
@@ -379,7 +137,6 @@ const products: IProductInput[] = [
       'Elevate your outfit with this soft long sleeve t shirt men. This full sleeves tee is the ultimate upgrade from your regular cotton t-shirt. ',
     sizes: ['XL', 'XXL'],
     colors: ['Yellow', 'White'],
-
     reviews: [],
   },
   {
@@ -409,7 +166,6 @@ const products: IProductInput[] = [
       "Slim Fit Design:Men's Muscle Slim Fit Button Henley Shirts are designed to fit snugly against your body, accentuating your muscles and creating a sleek silhouette that's perfect for any occasion. ",
     sizes: ['XL', 'XXL'],
     colors: ['Green', 'Yellow'],
-
     reviews: [],
   },
   {
@@ -437,7 +193,6 @@ const products: IProductInput[] = [
       'Heavyweight cotton (Heathers are 60% cotton/40% polyester; Pebblestone is 75% cotton/25% polyester)',
     sizes: ['XL', 'XXL'],
     colors: ['Grey', 'White'],
-
     reviews: [],
   },
   // Jeans
@@ -466,7 +221,6 @@ const products: IProductInput[] = [
       'Silver Jeans Co. Jace Slim Fit Bootcut Jeans - Consider Jace a modern cowboy jean. It sits below the waist and features a slim fit through the hip and thigh. Finished with an 18” bootcut leg opening that complements the slimmer silhouette while still fitting over boots',
     sizes: ['30Wx30L', '34Wx30L', '36Wx30L'],
     colors: ['Blue', 'Grey'],
-
     reviews: [],
   },
   {
@@ -496,7 +250,6 @@ const products: IProductInput[] = [
       'A veritable classic, this 505 is made to have a comfortable look and style.',
     sizes: ['30Wx30L', '34Wx30L', '36Wx30L'],
     colors: ['Blue', 'Grey'],
-
     reviews: [],
   },
   {
@@ -524,7 +277,6 @@ const products: IProductInput[] = [
       'These classic 5-pocket straight-fit jeans are crafted with a bit of stretch for additional comfort and to help maintain their shape',
     sizes: ['30Wx30L', '34Wx30L', '36Wx30L'],
     colors: ['Grey', 'Blue'],
-
     reviews: [],
   },
   {
@@ -554,7 +306,6 @@ const products: IProductInput[] = [
       'Stretch recycled denim jeans in an authentic and sanded wash blue. Features a comfortable low-rise waist with a relaxed fit at the leg. The distressed look gives these jeans an effortlessly worn-in feel. The eco-friendly logo patch in tan and red is at the back waistband. The signature maple leaf graphic is debossed at the zip-fly.',
     sizes: ['30Wx30L', '34Wx30L', '36Wx30L'],
     colors: ['Blue', 'Grey'],
-
     reviews: [],
   },
   {
@@ -582,7 +333,6 @@ const products: IProductInput[] = [
       'Relaxed work jean with traditional carpenter-style pockets and logo patch at back pockets',
     sizes: ['30Wx30L', '34Wx30L', '36Wx30L'],
     colors: ['Blue', 'Grey'],
-
     reviews: [],
   },
   {
@@ -610,7 +360,6 @@ const products: IProductInput[] = [
       'Designed with a functional fit in mind, these jeans are made to stack over your favorite pair of boots. Constructed with a slim fit in the waist, seat, and thigh, this jean is made for both function and comfort for long days in the saddle.',
     sizes: ['30Wx30L', '34Wx30L', '36Wx30L'],
     colors: ['Blue', 'Grey'],
-
     reviews: [],
   },
   // Watches
@@ -639,7 +388,6 @@ const products: IProductInput[] = [
       'Casing: Case made of stainless steel Case shape: round Case colour: silver Glass: Hardlex Clasp type: Fold over clasp with safety',
     sizes: [],
     colors: [],
-
     reviews: [],
   },
   {
@@ -669,7 +417,6 @@ const products: IProductInput[] = [
       'Seiko 5 Sports Collection Inspired by vintage field/aviator style: Automatic with manual winding capability',
     sizes: [],
     colors: [],
-
     reviews: [],
   },
   {
@@ -699,7 +446,6 @@ const products: IProductInput[] = [
       'The Casio range is growing with this model  MWA-100H-1AVEF. Sporting a stainless steel case with a brushed finish, it will easily withstand all the shocks of everyday life.',
     sizes: [],
     colors: [],
-
     reviews: [],
   },
   {
@@ -729,7 +475,6 @@ const products: IProductInput[] = [
       'The new MTPVD01D-7EV is a classic 50 meter water resistant stainless steel watch now updated with a white dial. This elegant 3 hand, date display timepiece is perfect for any setting.',
     sizes: [],
     colors: [],
-
     reviews: [],
   },
   {
@@ -757,7 +502,6 @@ const products: IProductInput[] = [
       'Chronograph watch featuring silver- and blue-tone case, blue sunray dial, and silver-tone Roman numeral indices',
     sizes: [],
     colors: ['Blue', 'Black', 'Sliver'],
-
     reviews: [],
   },
   {
@@ -785,7 +529,6 @@ const products: IProductInput[] = [
       'In masculine black-on-black, our industrial-inspired Machine watch will add a fresh, modern touch to your casual look. This Machine watch also features a three hand movement on a stainless steel bracelet.',
     sizes: [],
     colors: ['Brown', 'Sliver', 'Black'],
-
     reviews: [],
   },
   // Sneakers
@@ -814,7 +557,6 @@ const products: IProductInput[] = [
       'Cloudfoam Comfort sockliner is ultra-soft and plush, with two layers of cushioning topped with soft, breathable mesh',
     sizes: ['8', '9', '10'],
     colors: ['White', 'Black', 'Grey'],
-
     reviews: [],
   },
   {
@@ -844,7 +586,6 @@ const products: IProductInput[] = [
       'Cloudfoam Comfort sockliner is ultra-soft and plush, with two layers of cushioning topped with soft, breathable mesh',
     sizes: ['8', '9', '10'],
     colors: ['Beige', 'Black', 'Grey'],
-
     reviews: [],
   },
   {
@@ -874,7 +615,6 @@ const products: IProductInput[] = [
       'Step into easy-wearing comfort with Skechers Hands Free Slip-ins™: Summits - High Range. Along with our Exclusive Heel Pillow™ holds your foot securely in place, this vegan style features a unique pop-up Skechers Slip-ins™ molded heel panel, a mesh upper with fixed laces',
     sizes: ['8', '9', '10'],
     colors: ['Navy', 'Black', 'Grey'],
-
     reviews: [],
   },
   {
@@ -904,7 +644,6 @@ const products: IProductInput[] = [
       'Design: Mesh vamp, ventilation. Sole anti-slip groove design, shock absorption and anti-slip. The inside of the shoe is wide and soft, bringing you a good comfortable experience',
     sizes: ['8', '9', '10', '11', '12'],
     colors: ['Brown', 'Black', 'Grey'],
-
     reviews: [],
   },
   {
@@ -932,7 +671,6 @@ const products: IProductInput[] = [
       "At least 50% of the shoe's main upper material is made with recycled content to reduce waste and carbon emissions",
     sizes: ['8', '9', '10', '11'],
     colors: ['Blue', 'Black', 'Grey'],
-
     reviews: [],
   },
   {
@@ -962,10 +700,10 @@ const products: IProductInput[] = [
       'Cloudfoam Comfort sockliner is ultra-soft and plush, with two layers of cushioning topped with soft, breathable mesh',
     sizes: ['8', '9', '10', '11'],
     colors: ['Green', 'Black', 'Grey'],
-
     reviews: [],
   },
 ]
+
 const reviews = [
   {
     rating: 1,
@@ -1067,78 +805,83 @@ const data: Data = {
     {
       title: 'About Us',
       slug: 'about-us',
-      content: `Welcome to [Your Store Name], your trusted destination for quality products and exceptional service. Our journey began with a mission to bring you the best shopping experience by offering a wide range of products at competitive prices, all in one convenient platform.
+      content: `Welcome to Graphico, your premier destination for high-quality products and unparalleled service. Established with a vision to redefine the online shopping experience, we are dedicated to providing a comprehensive selection of premium goods at competitive prices, all accessible through a single, user-friendly platform.
 
-At [Your Store Name], we prioritize customer satisfaction and innovation. Our team works tirelessly to curate a diverse selection of items, from everyday essentials to exclusive deals, ensuring there's something for everyone. We also strive to make your shopping experience seamless with fast shipping, secure payments, and excellent customer support.
+At Graphico, we place the utmost importance on customer satisfaction and continuous improvement. Our experienced team meticulously curates an extensive assortment of products, ranging from essential everyday items to exclusive offerings, ensuring we meet the diverse needs of our clientele. We are committed to delivering a seamless shopping experience, supported by expedited shipping, secure payment systems, and a responsive customer service team.
 
-As we continue to grow, our commitment to quality and service remains unwavering. Thank you for choosing [Your Store Name]—we look forward to being a part of your journey and delivering value every step of the way.`,
+As we expand, our dedication to excellence and reliability remains steadfast. Thank you for choosing Graphico as your trusted partner—we are honored to serve you and look forward to providing exceptional value at every stage of your journey.`,
       isPublished: true,
     },
     {
       title: 'Contact Us',
       slug: 'contact-us',
-      content: `We’re here to help! If you have any questions, concerns, or feedback, please don’t hesitate to reach out to us. Our team is ready to assist you and ensure you have the best shopping experience.
+      content: `We’re here to help! If you have any questions, concerns, or feedback, please don’t hesitate to reach out to us. Our team is committed to assisting you and ensuring you enjoy the best possible shopping experience with Graphico.
 
-**Customer Support**
-For inquiries about orders, products, or account-related issues, contact our customer support team:
-- **Email:** support@example.com
-- **Phone:** +1 (123) 456-7890
-- **Live Chat:** Available on our website from 9 AM to 6 PM (Monday to Friday).
+Customer Support
 
-**Head Office**
+For inquiries regarding orders, products, or account-related matters, contact our dedicated customer support team:
+
+Email: support@graphico.com
+Phone: +63 (46) 123-4567
+Live Chat: Available on our website from 8 AM to 5 PM (Monday to Friday, Philippine Standard Time).
+Head Office
+
 For corporate or business-related inquiries, reach out to our headquarters:
-- **Address:** 1234 E-Commerce St, Suite 567, Business City, BC 12345
-- **Phone:** +1 (987) 654-3210
 
-We look forward to assisting you! Your satisfaction is our priority.
+Address: Graphico, Blk 10 Lot 5, Salawag Road, Dasmariñas City, Cavite 4114, Philippines
+Phone: +63 (46) 789-0123
+We look forward to serving you! At Graphico, your satisfaction is our top priority.
 `,
       isPublished: true,
     },
     {
       title: 'Help',
       slug: 'help',
-      content: `Welcome to our Help Center! We're here to assist you with any questions or concerns you may have while shopping with us. Whether you need help with orders, account management, or product inquiries, this page provides all the information you need to navigate our platform with ease.
+      content: `Welcome to Graphico’s Help Center! We’re here to assist you with any questions or concerns you may have while shopping with us. Whether you need support with orders, account management, or product inquiries, this page provides all the information you need to navigate our platform effortlessly.
 
-**Placing and Managing Orders**
-Placing an order is simple and secure. Browse our product categories, add items to your cart, and proceed to checkout. Once your order is placed, you can track its status through your account under the "My Orders" section. If you need to modify or cancel your order, please contact us as soon as possible for assistance.
+Placing and Managing Orders
 
-**Shipping and Returns**
-We offer a variety of shipping options to suit your needs, including standard and express delivery. For detailed shipping costs and delivery timelines, visit our Shipping Policy page. If you're not satisfied with your purchase, our hassle-free return process allows you to initiate a return within the specified timeframe. Check our Returns Policy for more details.
+Placing an order with Graphico is simple and secure. Explore our product categories, add items to your cart, and proceed to checkout. Once your order is confirmed, you can monitor its progress through your account in the "My Orders" section. Should you need to modify or cancel your order, please reach out to us promptly for assistance.
 
-**Account and Support**
-Managing your account is easy. Log in to update your personal information, payment methods, and saved addresses. If you encounter any issues or need further assistance, our customer support team is available via email, live chat, or phone. Visit our Contact Us page for support hours and contact details.`,
+Shipping and Returns
+
+Graphico offers a range of shipping options tailored to your needs, including standard and express delivery. For detailed shipping rates and estimated delivery times, please refer to our Shipping Policy page. If you’re not completely satisfied with your purchase, our streamlined return process allows you to request a return within the designated period. Visit our Returns Policy for additional information.
+
+Account and Support
+
+Managing your Graphico account is straightforward. Log in to update your personal details, payment options, and saved addresses. If you experience any difficulties or require further assistance, our dedicated customer support team is available via email, live chat, or phone. Check our Contact Us page for support hours and contact information.`,
       isPublished: true,
     },
     {
       title: 'Privacy Policy',
       slug: 'privacy-policy',
-      content: `We value your privacy and are committed to protecting your personal information. This Privacy Notice explains how we collect, use, and share your data when you interact with our services. By using our platform, you consent to the practices described herein.
+      content: `At Graphico, we value your privacy and are dedicated to safeguarding your personal information. This Privacy Notice outlines how we collect, use, and share your data when you engage with our services. By utilizing our platform, you agree to the practices detailed below.
 
-We collect data such as your name, email address, and payment details to provide you with tailored services and improve your experience. This information may also be used for marketing purposes, but only with your consent. Additionally, we may share your data with trusted third-party providers to facilitate transactions or deliver products.
+Graphico collects information such as your name, email address, and payment details to deliver personalized services and enhance your experience. With your consent, this data may also be used for marketing purposes. To facilitate transactions or product delivery, we may share your information with trusted third-party providers.
 
-Your data is safeguarded through robust security measures to prevent unauthorized access. However, you have the right to access, correct, or delete your personal information at any time. For inquiries or concerns regarding your privacy, please contact our support team.`,
+We employ stringent security measures to protect your data from unauthorized access. You retain the right to access, update, or delete your personal information at any time. For any questions or concerns about your privacy, please reach out to our support team.`,
       isPublished: true,
     },
     {
       title: 'Conditions of Use',
       slug: 'conditions-of-use',
-      content: `Welcome to [Ecommerce Website Name]. By accessing or using our website, you agree to comply with and be bound by the following terms and conditions. These terms govern your use of our platform, including browsing, purchasing products, and interacting with any content or services provided. You must be at least 18 years old or have the consent of a parent or guardian to use this website. Any breach of these terms may result in the termination of your access to our platform.
+      content: `Welcome to Graphico. By accessing or using our website, you agree to comply with and be bound by the following terms and conditions. These terms govern your use of our platform, including browsing, purchasing products, and interacting with any content or services provided. You must be at least 18 years old or have the consent of a parent or guardian to use this website. Any violation of these terms may result in the termination of your access to our platform.
 
-We strive to ensure all product descriptions, pricing, and availability information on our website are accurate. However, errors may occur, and we reserve the right to correct them without prior notice. All purchases are subject to our return and refund policy. By using our site, you acknowledge that your personal information will be processed according to our privacy policy, ensuring your data is handled securely and responsibly. Please review these terms carefully before proceeding with any transactions.
+Graphico strives to ensure that all product descriptions, pricing, and availability information on our website are accurate. However, errors may occasionally occur, and we reserve the right to correct them without prior notice. All purchases are subject to our return and refund policy. By using our site, you acknowledge that your personal information will be processed in accordance with our privacy policy, ensuring your data is managed securely and responsibly. Please review these terms carefully before proceeding with any transactions.
 `,
       isPublished: true,
     },
     {
       title: 'Customer Service',
       slug: 'customer-service',
-      content: `At [Your Store Name], our customer service team is here to ensure you have the best shopping experience. Whether you need assistance with orders, product details, or returns, we are committed to providing prompt and helpful support.
+      content: `At Graphico, our customer service team is dedicated to ensuring you enjoy the best shopping experience. Whether you need assistance with orders, product details, or returns, we are committed to delivering prompt and reliable support.
 
-If you have questions or concerns, please reach out to us through our multiple contact options:
-- **Email:** support@example.com
-- **Phone:** +1 (123) 456-7890
-- **Live Chat:** Available on our website for instant assistance
+If you have questions or concerns, please feel free to contact us through our various channels:
 
-We also provide helpful resources such as order tracking, product guides, and FAQs to assist you with common inquiries. Your satisfaction is our priority, and we’re here to resolve any issues quickly and efficiently. Thank you for choosing us!`,
+Email: support@graphico.com
+Phone: +63 (46) 123-4567
+Live Chat: Available on our website for instant assistance
+We also offer valuable resources, including order tracking, product guides, and FAQs, to help address common inquiries. Your satisfaction is our top priority, and we’re here to resolve any issues swiftly and effectively. Thank you for choosing Graphico!`,
       isPublished: true,
     },
     {
@@ -1343,13 +1086,6 @@ We also provide helpful resources such as order tracking, product guides, and FA
 
   carousels: [
     {
-      title: 'Most Popular Shoes For Sale',
-      buttonCaption: 'Shop Now',
-      image: '/images/banner3.jpg',
-      url: '/search?category=Shoes',
-      isPublished: true,
-    },
-    {
       title: 'Best Sellers in T-Shirts',
       buttonCaption: 'Shop Now',
       image: '/images/banner1.jpg',
@@ -1357,14 +1093,20 @@ We also provide helpful resources such as order tracking, product guides, and FA
       isPublished: true,
     },
     {
-      title: 'Best Deals on Wrist Watches',
+      title: 'Best Deals on Summer Sale',
       buttonCaption: 'See More',
       image: '/images/banner2.jpg',
       url: '/search?category=Wrist Watches',
       isPublished: true,
     },
+    {
+      title: 'Most Popular Graphic Shirt On Sale',
+      buttonCaption: 'Shop Now',
+      image: '/images/banner3.jpg',
+      url: '/search?category=Shoes',
+      isPublished: true,
+    },
   ],
-
   settings: [
     {
       common: {
@@ -1391,22 +1133,22 @@ We also provide helpful resources such as order tracking, product guides, and FA
       },
       carousels: [
         {
-          title: 'Rock the Look with Budget Friendly Graphico!',
+          title: 'Most Popular Shoes For Sale',
           buttonCaption: 'Shop Now',
-          image: '/images/banner3.jpg',
-          url: '/search?tag=new-arrival',
+          image: '/images/banner3.png',
+          url: '/search?category=Shoes',
         },
         {
-          title: 'Level Up Your Wardrobe with Tee-riffic Shirts',
+          title: 'Best Sellers in T-Shirts',
           buttonCaption: 'Shop Now',
-          image: '/images/banner1.jpg',
-          url: '/search?tag=featured',
+          image: '/images/banner1.png',
+          url: '/search?category=T-Shirts',
         },
         {
-          title: 'Deals Too Good to be Miss Out!',
+          title: 'Best Deals on Wrist Watches',
           buttonCaption: 'See More',
-          image: '/images/banner2.jpg',
-          url: '/search?tag=best-seller',
+          image: '/images/banner2.png',
+          url: '/search?category=Wrist Watches',
         },
       ],
       availableLanguages: i18n.locales.map((locale) => ({
@@ -1420,9 +1162,22 @@ We also provide helpful resources such as order tracking, product guides, and FA
           code: 'USD',
           symbol: '$',
           convertRate: 1,
+          flag: '/images/us-flag.png',
         },
-        { name: 'Euro', code: 'EUR', symbol: '€', convertRate: 0.96 },
-        { name: 'UAE Dirham', code: 'AED', symbol: 'AED', convertRate: 3.67 },
+        {
+          name: 'Euro',
+          code: 'EUR',
+          symbol: '€',
+          convertRate: 0.96,
+          flag: '/images/eu-flag.png',
+        },
+        {
+          name: 'Philippine Peso',
+          code: 'PHP',
+          symbol: '₱',
+          convertRate: 56.12,
+          flag: '/images/ph-flag.png',
+        },
       ],
       defaultCurrency: 'USD',
       availablePaymentMethods: [

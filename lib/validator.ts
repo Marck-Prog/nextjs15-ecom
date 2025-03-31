@@ -241,7 +241,7 @@ export const SiteCurrencySchema = z.object({
   code: z.string().min(1, 'Code is required'),
   convertRate: z.coerce.number().min(0, 'Convert rate must be at least 0'),
   symbol: z.string().min(1, 'Symbol is required'),
-  flag: z.string().optional(),
+  flag: z.string().optional().default(''),
 })
 
 export const PaymentMethodSchema = z.object({

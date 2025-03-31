@@ -57,6 +57,7 @@ export default function LanguageSwitcher() {
             alt={`${currentCurrency.name} Flag`}
             width={19}
             height={20}
+            className='mr-2'
             onError={() =>
               console.error(`Failed to load flag for ${currentCurrency.code}`)
             }
@@ -67,7 +68,9 @@ export default function LanguageSwitcher() {
         <span className='text-black font-bold mr-2'>
           {currentCurrency.symbol}
         </span>
-        <span className='text-black font-bold'>{currentCurrency.code}</span>
+        <span className='text-black font-bold mr-5'>
+          {currentCurrency.code}
+        </span>
       </div>
       <div className='ml-3 hidden lg:flex hover:bg-white mr-5'>
         <DropdownMenu open={open} onOpenChange={setOpen}>
