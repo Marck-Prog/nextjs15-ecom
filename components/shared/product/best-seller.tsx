@@ -35,7 +35,7 @@ const BestSeller = ({ title = 'Best Sellers', products }: BestSellerProps) => {
   return (
     <section className='w-full 2xl:max-w-[2400px] py-8 sm:px-6'>
       <div className='flex justify-between items-center mb-6'>
-        <h2 className='text-2xl font-bold md:text-3xl'>{title}</h2>
+        <h2 className='text-2xl font-bold md:text-3xl italic'>{title}</h2>
         <div className='flex items-center space-x-2'>
           <Link href='/search'>
             <button className='text-sm font-semibold hidden sm:flex hover:text-gray-700'>
@@ -80,7 +80,7 @@ const BestSeller = ({ title = 'Best Sellers', products }: BestSellerProps) => {
                              sm:flex-[0_0_50%] 
                              md:flex-[0_0_33.33%] 
                              lg:flex-[0_0_25%] 
-                             2xl:flex-[0_0_20%]' // Show 5 items on 2xl screens (2560px)
+                             2xl:flex-[0_0_20%]'
                 >
                   <div
                     className='flex flex-col h-full transition-all duration-300 
@@ -101,7 +101,7 @@ const BestSeller = ({ title = 'Best Sellers', products }: BestSellerProps) => {
                                  (max-width: 768px) 50vw, 
                                  (max-width: 1024px) 33vw, 
                                  (max-width: 1536px) 25vw, 
-                                 20vw' // Adjusted for 2xl breakpoint
+                                 20vw'
                         />
                       </div>
                       <div className='flex flex-col flex-grow mt-4'>

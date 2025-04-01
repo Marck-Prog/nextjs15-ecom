@@ -3,13 +3,14 @@ import FashionSection from '@/components/shared/home/fashion-card'
 // import { HomeCard } from '@/components/shared/home/home-card'
 import { HomeCarousel } from '@/components/shared/home/home-carousel'
 import BestSeller from '@/components/shared/product/best-seller'
+import Features from '@/components/shared/product/features'
+import ProductGrid from '@/components/shared/product/fun-things'
 import ProductSlider from '@/components/shared/product/product-slider'
 import { Card, CardContent } from '@/components/ui/card'
 
 import {
   // getProductsForCard,
   getProductsByTag,
-  // getAllCategories,
 } from '@/lib/actions/product.actions'
 import { getSetting } from '@/lib/actions/setting.actions'
 // import { toSlug } from '@/lib/utils'
@@ -95,9 +96,13 @@ export default async function HomePage() {
         </Card>
       </div>
 
-      {/* <div className='p-4 bg-background'>
-        <BrowsingHistoryList />
-      </div> */}
+      <div className='p-4 bg-background'>
+        <Features />
+      </div>
+
+      <div className='w-full h-full'>
+        <ProductGrid title={t('Collections')} />
+      </div>
     </>
   )
 }

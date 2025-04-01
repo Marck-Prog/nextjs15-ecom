@@ -22,7 +22,7 @@ export default function ProductSlider({
 }) {
   return (
     <div className='w-full bg-background space-x-2'>
-      <h2 className='h2-bold mb-5'>{title}</h2>
+      <h2 className='text-2xl font-bold md:text-3xl mb-2 italic'>{title}</h2>
       <Carousel
         opts={{
           align: 'start',
@@ -35,8 +35,8 @@ export default function ProductSlider({
               key={product.slug}
               className={
                 hideDetails
-                  ? 'md:basis-1/4 lg:basis-1/6'
-                  : 'md:basis-1/3 lg:basis-1/5'
+                  ? 'md:basis-1/4 lg:basis-1/6 group hover:border rounded-sm hover:bg-border-300 transition-colors duration-200'
+                  : 'md:basis-1/3 lg:basis-1/5 group hover:border rounded-sm hover:bg-border-300 transition-colors duration-200'
               }
             >
               <ProductCard
