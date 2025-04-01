@@ -116,7 +116,7 @@ export default function Navbar({
           </div>
 
           {/* Logo (centered on mobile/tablet, left on desktop) */}
-          <div className='flex-1 flex justify-center lg:justify-start max-sm:mr-[-18px]'>
+          <div className='flex-1 flex justify-center lg:justify-start'>
             <Link href='/'>
               <Image
                 src={site.logo}
@@ -139,7 +139,7 @@ export default function Navbar({
           </div>
 
           {/* Right Section: Icons */}
-          <div className='flex items-center space-x-4'>
+          <div className='flex items-center space-x-4 hover:bg-white'>
             {/* Flag and Currency (visible only on lg and above) */}
             <div className='hidden xl:flex'>
               <LanguageSwitcher />
@@ -149,10 +149,10 @@ export default function Navbar({
             <Button
               variant='ghost'
               size='icon'
-              className=' hover:bg-white hidden lg:block'
+              className=' hover:bg-white !important hidden lg:block'
               onClick={() => setIsSearchOpen(true)}
             >
-              <Search className='h-5 w-5' />
+              <Search className='h-5 w-5 ml-2' />
             </Button>
 
             {/* User Icon (visible on md and above) */}

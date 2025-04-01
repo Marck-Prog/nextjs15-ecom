@@ -68,11 +68,11 @@ export default function LanguageSwitcher() {
         <span className='text-black font-bold mr-2'>
           {currentCurrency.symbol}
         </span>
-        <span className='text-black font-bold mr-5'>
+        <span className='text-black font-bold mr-3'>
           {currentCurrency.code}
         </span>
       </div>
-      <div className='ml-3 hidden lg:flex hover:bg-white mr-5'>
+      <div className='ml-3 hidden lg:flex hover:bg-white mr-2'>
         <DropdownMenu open={open} onOpenChange={setOpen}>
           <DropdownMenuTrigger className='focus:outline-none'>
             <div className='flex items-center gap-1 mb-1'>

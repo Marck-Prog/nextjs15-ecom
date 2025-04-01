@@ -27,7 +27,7 @@ export default function UserButtonClient() {
         <Button
           variant='ghost'
           size='icon'
-          className='relative w-10 h-10 hover:bg-white bg:white focus:outline-none rounded-full'
+          className='relative w-10 h-10focus:outline-none rounded-full max-sm:mr-[-4px]'
         >
           {userImage ? (
             <Image
@@ -38,7 +38,7 @@ export default function UserButtonClient() {
               className='rounded-full'
             />
           ) : (
-            <UserRound className='h-5 w-5 max-sm:ml-12' />
+            <UserRound className='h-5 w-5' />
           )}
         </Button>
       </DropdownMenuTrigger>
@@ -63,7 +63,7 @@ export default function UserButtonClient() {
               <Link href='/account'>
                 <Button
                   variant='ghost'
-                  className='w-full text-left px-4 py-2 text-white bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 transition duration-150 ease-in-out rounded-md'
+                  className='w-full text-left px-4 py-2 text-white bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 hover:text-white transition duration-150 ease-in-out rounded-md border-none'
                 >
                   {t('Your account')}
                 </Button>
@@ -73,7 +73,7 @@ export default function UserButtonClient() {
               <Link href='/account/orders'>
                 <Button
                   variant='ghost'
-                  className='w-full text-left px-4 py-2 text-white bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 transition duration-150 ease-in-out rounded-md'
+                  className='w-full text-left px-4 py-2 text-white bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 hover:text-white transition duration-150 ease-in-out rounded-md border-none'
                 >
                   {t('Your orders')}
                 </Button>
@@ -84,7 +84,7 @@ export default function UserButtonClient() {
                 <Link href='/admin/overview'>
                   <Button
                     variant='ghost'
-                    className='w-full text-left px-4 py-2 text-white bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 transition duration-150 ease-in-out rounded-md'
+                    className='w-full text-left px-4 py-2 text-white bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 hover:text-white transition duration-150 ease-in-out rounded-md border-none'
                   >
                     {t('Admin')}
                   </Button>
@@ -92,10 +92,10 @@ export default function UserButtonClient() {
               </DropdownMenuItem>
             )}
           </DropdownMenuGroup>
-          <DropdownMenuItem className='p-0'>
+          <DropdownMenuItem className='p-2'>
             <Button
               variant='ghost'
-              className='w-full h-auto py-2 px-4 text-left text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition duration-150 ease-in-out'
+              className='w-full h-auto py-2 px-4 text-left text-white bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 hover:text-white transition duration-150 ease-in-out rounded-md border-none'
               onClick={() => signOut({ callbackUrl: '/' })}
             >
               {t('Sign out')}

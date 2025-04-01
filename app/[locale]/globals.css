@@ -1,6 +1,8 @@
 @import 'tailwindcss';
 
+html,
 body {
+  overflow-x: hidden;
   font-family: var(--font-roboto-condensed), sans-serif;
   background-color: #ffffff;
   color: #000000;
@@ -236,7 +238,6 @@ a.highlight-link {
 .animate-scroll {
   display: inline-flex;
   animation: scroll 20s linear infinite;
-  width: max-content;
 }
 
 @media (max-width: 576px) {
