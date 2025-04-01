@@ -1,7 +1,8 @@
-import BrowsingHistoryList from '@/components/shared/browsing-history-list'
+// import BrowsingHistoryList from '@/components/shared/browsing-history-list'
 import FashionSection from '@/components/shared/home/fashion-card'
 // import { HomeCard } from '@/components/shared/home/home-card'
 import { HomeCarousel } from '@/components/shared/home/home-carousel'
+import BestSeller from '@/components/shared/product/best-seller'
 import ProductSlider from '@/components/shared/product/product-slider'
 import { Card, CardContent } from '@/components/ui/card'
 
@@ -84,9 +85,9 @@ export default async function HomePage() {
           </CardContent>
         </Card>
         <Card className='w-full rounded-none'>
-          <CardContent className='p-4 items-center gap-3'>
-            <ProductSlider
-              title={t('Best Selling Products')}
+          <CardContent className='items-center gap-3'>
+            <BestSeller
+              title={t('Top Picks')}
               products={bestSellingProducts}
               hideDetails
             />
@@ -94,9 +95,9 @@ export default async function HomePage() {
         </Card>
       </div>
 
-      <div className='p-4 bg-background'>
+      {/* <div className='p-4 bg-background'>
         <BrowsingHistoryList />
-      </div>
+      </div> */}
     </>
   )
 }

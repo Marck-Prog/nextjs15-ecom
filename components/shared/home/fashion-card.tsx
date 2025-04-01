@@ -25,7 +25,7 @@ const FashionSection: React.FC = () => {
       href: '/search?tag=new-arrival',
     },
     {
-      name: "Kids'",
+      name: 'Unisex',
       image: '/images/nike2.png',
       href: '/search?tag=featured',
     },
