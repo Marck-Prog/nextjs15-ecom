@@ -23,7 +23,7 @@ const ProductGrid = ({ title = 'Best Sellers' }: ProductGridProps) => {
             src={products[0].image}
             alt={products[0].category}
             fill
-            className='w-full h-full object-cover rounded-md transition-transform duration-300 hover:scale-110'
+            className='w-full h-full object-cover rounded-md transition-transform duration-300 group-hover:scale-101'
           />
           <div className='absolute inset-0'>
             <div className='absolute bottom-0 left-0 right-0 p-4'>
@@ -43,7 +43,7 @@ const ProductGrid = ({ title = 'Best Sellers' }: ProductGridProps) => {
             src={products[1].image}
             alt={products[1].category}
             fill
-            className='w-full h-full object-cover rounded-md transition-transform duration-300 hover:scale-110'
+            className='w-full h-full object-cover rounded-md transition-transform duration-300 group-hover:scale-101'
           />
           <div className='absolute inset-0'>
             <div className='absolute bottom-0 left-0 right-0 p-4'>
@@ -63,7 +63,7 @@ const ProductGrid = ({ title = 'Best Sellers' }: ProductGridProps) => {
             src={products[2].image}
             alt={products[2].category}
             fill
-            className='w-full h-full object-cover rounded-md transition-transform duration-300 hover:scale-110'
+            className='w-full h-full object-cover rounded-md transition-transform duration-300 group-hover:scale-101'
           />
           <div className='absolute inset-0'>
             <div className='absolute bottom-0 left-0 right-0 p-4'>
@@ -83,7 +83,7 @@ const ProductGrid = ({ title = 'Best Sellers' }: ProductGridProps) => {
             src={products[3].image}
             alt={products[3].category}
             fill
-            className='w-full h-full object-cover rounded-md transition-transform duration-300 hover:scale-110'
+            className='w-full h-full object-cover rounded-md transition-transform duration-300 group-hover:scale-101'
           />
           <div className='absolute inset-0'>
             <div className='absolute bottom-0 left-0 right-0 p-4'>
@@ -103,7 +103,7 @@ const ProductGrid = ({ title = 'Best Sellers' }: ProductGridProps) => {
             src={products[4].image}
             alt={products[4].category}
             fill
-            className='w-full h-full object-cover rounded-md transition-transform duration-300 hover:scale-110'
+            className='w-full h-full object-cover rounded-md transition-transform duration-300 group-hover:scale-101'
           />
           <div className='absolute inset-0'>
             <div className='absolute bottom-0 left-0 right-0 p-4'>
